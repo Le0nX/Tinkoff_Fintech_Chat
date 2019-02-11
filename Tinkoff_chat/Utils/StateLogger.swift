@@ -20,17 +20,17 @@ import Foundation
  ### Usage Example: ###
  
  ```
- let logger = Logger.shared
- logger.info(about: #function)
+ let logger = StateLogger.shared
+ logger.printInfo(about: #function)
  
- logger.currentStateTransitonInfo(#function)
+ logger.appStateTransitionInfo(#function, "some state")
  
  ```
 */
-class Logger {
+class StateLogger {
     
     /// This is a **singleton** for the only one instance of Logger in our system
-    static let shared = Logger()
+    static let shared = StateLogger()
     
     private init(){}
     
@@ -44,11 +44,11 @@ class Logger {
      Method understands if the calling function has "Will" in it's name and
      automaticly makes a decision about current state of the App.
     */
-    func currentStateTransitionInfo(_ fromFunction: String, to state: String) {
-        if fromFunction.contains("Will") {
-            self.info(about: "Application will move from \(lastState) to \(state): \(fromFunction)")
+    func appStateTransitionInfo(_ fromFunction: String, to state: String) {
+        if fromFunction.contains("Will"), lastState != state {
+            self.printInfo(about: "Application will move from \(lastState) to \(state): \(fromFunction)")
         } else {
-            self.info(about: "Application moved from \(lastState) to \(state): \(fromFunction)")
+            self.printInfo(about: "Application moved from \(lastState) to \(state): \(fromFunction)")
 
         }
         lastState = state // updating state
@@ -58,7 +58,7 @@ class Logger {
       Just prints a string.
       Uses DEBUG target to enable/disable printing
     */
-    func info(about: String) {
+    func printInfo(about: String) {
         #if DEBUG
         print(about)
         #endif

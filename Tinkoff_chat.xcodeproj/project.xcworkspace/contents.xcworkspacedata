@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Tinkoff_chat.xcodeproj">
+      location = "self:/Users/le0nx/wrk/TINKOFF/Tinkoff_chat/Tinkoff_chat.xcodeproj">
    </FileRef>
 </Workspace>
