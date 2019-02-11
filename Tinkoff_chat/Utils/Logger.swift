@@ -10,7 +10,7 @@ import Foundation
 
 
 /**
-    Logs App state transition
+    Logs App's state transition
  
  ## Important Notes ##
  1. Logger is a singleton class
@@ -38,11 +38,11 @@ class Logger {
     private var lastState: String = "Not running"
     
     /**
-        Function of logging current state transition information
+        Function of logging current state's transition information
      ## Important Notes ##
      
      Method understands if the calling function has "Will" in it's name and
-     automaticly makes a decision about current state of App.
+     automaticly makes a decision about current state of the App.
     */
     func currentStateTransitionInfo(_ fromFunction: String, to state: String) {
         if fromFunction.contains("Will") {
