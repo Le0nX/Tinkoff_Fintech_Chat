@@ -15,6 +15,8 @@
 		14AD30162211860A008DEADC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AD30142211860A008DEADC /* LaunchScreen.storyboard */; };
 		14AD30212211860A008DEADC /* Tinkoff_chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD30202211860A008DEADC /* Tinkoff_chatTests.swift */; };
 		14AD302C2211860A008DEADC /* Tinkoff_chatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD302B2211860A008DEADC /* Tinkoff_chatUITests.swift */; };
+		14AD303B22119128008DEADC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303A22119128008DEADC /* Logger.swift */; };
+		14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		14AD30272211860A008DEADC /* Tinkoff_chatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tinkoff_chatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AD302B2211860A008DEADC /* Tinkoff_chatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tinkoff_chatUITests.swift; sourceTree = "<group>"; };
 		14AD302D2211860A008DEADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14AD303A22119128008DEADC /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplicationState+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 		14AD300722118609008DEADC /* Tinkoff_chat */ = {
 			isa = PBXGroup;
 			children = (
+				14AD303C22119EA6008DEADC /* Extensions */,
+				14AD3039221190F1008DEADC /* Utils */,
 				14AD300822118609008DEADC /* AppDelegate.swift */,
 				14AD300A22118609008DEADC /* ViewController.swift */,
 				14AD300C22118609008DEADC /* Main.storyboard */,
@@ -126,6 +132,22 @@
 				14AD302D2211860A008DEADC /* Info.plist */,
 			);
 			path = Tinkoff_chatUITests;
+			sourceTree = "<group>";
+		};
+		14AD3039221190F1008DEADC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				14AD303A22119128008DEADC /* Logger.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		14AD303C22119EA6008DEADC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +284,8 @@
 				14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */,
 				14AD300B22118609008DEADC /* ViewController.swift in Sources */,
 				14AD300922118609008DEADC /* AppDelegate.swift in Sources */,
+				14AD303B22119128008DEADC /* Logger.swift in Sources */,
+				14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
