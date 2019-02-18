@@ -1,24 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="BYZ-38-t0r" customClass="ProfileViewController" customModule="Tinkoff_chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jdu-iB-S6d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user" translatesAutoresizingMaskIntoConstraints="NO" id="qnn-wU-711">
+                                <rect key="frame" x="16" y="36" width="288" height="288"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qnn-wU-711" secondAttribute="height" multiplier="1:1" id="GnW-JB-oxM"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61r-VF-RTf">
+                                <rect key="frame" x="16" y="504" width="288" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="2LU-ph-FT5"/>
+                                </constraints>
+                                <state key="normal" title="Редактировать">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Denis Nefedov" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gi-Ey-g1J">
+                                <rect key="frame" x="16" y="340" width="288" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" text="UAV programmer. Unix lover. iOS developer in soul" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcI-Gs-vI5">
+                                <rect key="frame" x="16" y="375" width="288" height="40.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMM-es-0Qc">
+                                <rect key="frame" x="232" y="252" width="72" height="72"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.47058823529999999" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="editUsernamePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="27E-IM-ksK"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="8nj-3g-Ike" firstAttribute="trailing" secondItem="kMM-es-0Qc" secondAttribute="trailing" constant="16" id="4OC-fG-hh0"/>
+                            <constraint firstItem="hcI-Gs-vI5" firstAttribute="top" secondItem="0gi-Ey-g1J" secondAttribute="bottom" priority="999" constant="8" id="4UJ-Mk-tbb"/>
+                            <constraint firstItem="8nj-3g-Ike" firstAttribute="trailing" secondItem="qnn-wU-711" secondAttribute="trailing" constant="16" id="4ZR-74-mLP"/>
+                            <constraint firstItem="qnn-wU-711" firstAttribute="leading" secondItem="8nj-3g-Ike" secondAttribute="leading" constant="16" id="DkE-Pk-PBY"/>
+                            <constraint firstItem="8nj-3g-Ike" firstAttribute="trailing" secondItem="0gi-Ey-g1J" secondAttribute="trailing" constant="16" id="HAt-Qo-fOv"/>
+                            <constraint firstItem="0gi-Ey-g1J" firstAttribute="leading" secondItem="8nj-3g-Ike" secondAttribute="leading" constant="16" id="Mp6-8F-xUG"/>
+                            <constraint firstItem="8nj-3g-Ike" firstAttribute="trailing" secondItem="hcI-Gs-vI5" secondAttribute="trailing" constant="16" id="PRG-aN-aAP"/>
+                            <constraint firstItem="0gi-Ey-g1J" firstAttribute="top" secondItem="qnn-wU-711" secondAttribute="bottom" constant="16" id="RQm-Ma-9ef"/>
+                            <constraint firstItem="kMM-es-0Qc" firstAttribute="height" secondItem="qnn-wU-711" secondAttribute="height" multiplier="1:4" id="SCu-qe-fmb"/>
+                            <constraint firstItem="8nj-3g-Ike" firstAttribute="bottom" secondItem="61r-VF-RTf" secondAttribute="bottom" constant="8" id="VFX-m2-Waa"/>
+                            <constraint firstItem="qnn-wU-711" firstAttribute="top" secondItem="8nj-3g-Ike" secondAttribute="top" constant="16" id="Z2C-Sv-3IL"/>
+                            <constraint firstItem="61r-VF-RTf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hcI-Gs-vI5" secondAttribute="bottom" priority="998" constant="16" id="ery-xG-Ni5"/>
+                            <constraint firstItem="kMM-es-0Qc" firstAttribute="bottom" secondItem="qnn-wU-711" secondAttribute="bottom" id="iAn-sf-WoB"/>
+                            <constraint firstItem="61r-VF-RTf" firstAttribute="leading" secondItem="8nj-3g-Ike" secondAttribute="leading" constant="16" id="nm5-6W-zVd"/>
+                            <constraint firstItem="kMM-es-0Qc" firstAttribute="width" secondItem="qnn-wU-711" secondAttribute="width" multiplier="1:4" id="pjV-bS-QXa"/>
+                            <constraint firstItem="hcI-Gs-vI5" firstAttribute="leading" secondItem="8nj-3g-Ike" secondAttribute="leading" constant="16" id="t8l-6h-POz"/>
+                            <constraint firstItem="8nj-3g-Ike" firstAttribute="trailing" secondItem="61r-VF-RTf" secondAttribute="trailing" constant="16" id="y0s-Ux-Kub"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8nj-3g-Ike"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLbl" destination="hcI-Gs-vI5" id="sDQ-UO-2A8"/>
+                        <outlet property="editBtn" destination="61r-VF-RTf" id="uxN-Eb-hZl"/>
+                        <outlet property="photoBtn" destination="kMM-es-0Qc" id="Oxa-Aw-AfS"/>
+                        <outlet property="profileImage" destination="qnn-wU-711" id="X5o-no-B4Y"/>
+                        <outlet property="userNameLbl" destination="0gi-Ey-g1J" id="KE8-CO-JFo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-343.19999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder-user" width="600" height="600"/>
+    </resources>
 </document>

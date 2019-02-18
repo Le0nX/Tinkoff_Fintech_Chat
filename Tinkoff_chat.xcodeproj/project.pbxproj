@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14AD300B22118609008DEADC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300A22118609008DEADC /* ViewController.swift */; };
+		14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300A22118609008DEADC /* ProfileViewController.swift */; };
 		14AD300E22118609008DEADC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AD300C22118609008DEADC /* Main.storyboard */; };
 		14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300F22118609008DEADC /* Tinkoff_chat.xcdatamodeld */; };
 		14AD30132211860A008DEADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14AD30122211860A008DEADC /* Assets.xcassets */; };
@@ -16,15 +16,8 @@
 		14AD302C2211860A008DEADC /* Tinkoff_chatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD302B2211860A008DEADC /* Tinkoff_chatUITests.swift */; };
 		14AD303B22119128008DEADC /* StateLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303A22119128008DEADC /* StateLogger.swift */; };
 		14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */; };
-		14AD30412211B306008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300F22118609008DEADC /* Tinkoff_chat.xcdatamodeld */; };
-		14AD30422211B306008DEADC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300A22118609008DEADC /* ViewController.swift */; };
-		14AD30432211B306008DEADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300822118609008DEADC /* AppDelegate.swift */; };
-		14AD30442211B306008DEADC /* StateLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303A22119128008DEADC /* StateLogger.swift */; };
-		14AD30452211B306008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */; };
-		14AD30482211B306008DEADC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AD30142211860A008DEADC /* LaunchScreen.storyboard */; };
-		14AD30492211B306008DEADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14AD30122211860A008DEADC /* Assets.xcassets */; };
-		14AD304A2211B306008DEADC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AD300C22118609008DEADC /* Main.storyboard */; };
 		14AD30502211B4D4008DEADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300822118609008DEADC /* AppDelegate.swift */; };
+		14DA2695221B26E80078B4CD /* UIView+anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA2694221B26E80078B4CD /* UIView+anchor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +40,7 @@
 /* Begin PBXFileReference section */
 		14AD300522118609008DEADC /* Tinkoff_chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinkoff_chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AD300822118609008DEADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		14AD300A22118609008DEADC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		14AD300A22118609008DEADC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		14AD300D22118609008DEADC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14AD301022118609008DEADC /* Tinkoff_chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tinkoff_chat.xcdatamodel; sourceTree = "<group>"; };
 		14AD30122211860A008DEADC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,8 +54,8 @@
 		14AD302D2211860A008DEADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14AD303A22119128008DEADC /* StateLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogger.swift; sourceTree = "<group>"; };
 		14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplicationState+CustomStringConvertible.swift"; sourceTree = "<group>"; };
-		14AD304E2211B306008DEADC /* DEBUG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEBUG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AD304F2211B306008DEADC /* Tinkoff_chat copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tinkoff_chat copy-Info.plist"; path = "/Users/le0nx/wrk/TINKOFF/Tinkoff_chat/Tinkoff_chat copy-Info.plist"; sourceTree = "<absolute>"; };
+		14DA2694221B26E80078B4CD /* UIView+anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+anchor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +74,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		14AD30242211860A008DEADC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		14AD30462211B306008DEADC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -114,7 +100,6 @@
 				14AD300522118609008DEADC /* Tinkoff_chat.app */,
 				14AD301C2211860A008DEADC /* Tinkoff_chatTests.xctest */,
 				14AD30272211860A008DEADC /* Tinkoff_chatUITests.xctest */,
-				14AD304E2211B306008DEADC /* DEBUG.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,7 +110,7 @@
 				14AD303C22119EA6008DEADC /* Extensions */,
 				14AD3039221190F1008DEADC /* Utils */,
 				14AD300822118609008DEADC /* AppDelegate.swift */,
-				14AD300A22118609008DEADC /* ViewController.swift */,
+				14AD300A22118609008DEADC /* ProfileViewController.swift */,
 				14AD300C22118609008DEADC /* Main.storyboard */,
 				14AD30122211860A008DEADC /* Assets.xcassets */,
 				14AD30142211860A008DEADC /* LaunchScreen.storyboard */,
@@ -165,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */,
+				14DA2694221B26E80078B4CD /* UIView+anchor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,23 +211,6 @@
 			productReference = 14AD30272211860A008DEADC /* Tinkoff_chatUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		14AD303F2211B306008DEADC /* DEBUG */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 14AD304B2211B306008DEADC /* Build configuration list for PBXNativeTarget "DEBUG" */;
-			buildPhases = (
-				14AD30402211B306008DEADC /* Sources */,
-				14AD30462211B306008DEADC /* Frameworks */,
-				14AD30472211B306008DEADC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DEBUG;
-			productName = Tinkoff_chat;
-			productReference = 14AD304E2211B306008DEADC /* DEBUG.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -279,7 +248,6 @@
 			projectRoot = "";
 			targets = (
 				14AD300422118609008DEADC /* Tinkoff_chat */,
-				14AD303F2211B306008DEADC /* DEBUG */,
 				14AD301B2211860A008DEADC /* Tinkoff_chatTests */,
 				14AD30262211860A008DEADC /* Tinkoff_chatUITests */,
 			);
@@ -311,16 +279,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		14AD30472211B306008DEADC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14AD30482211B306008DEADC /* LaunchScreen.storyboard in Resources */,
-				14AD30492211B306008DEADC /* Assets.xcassets in Resources */,
-				14AD304A2211B306008DEADC /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -329,7 +287,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */,
-				14AD300B22118609008DEADC /* ViewController.swift in Sources */,
+				14DA2695221B26E80078B4CD /* UIView+anchor.swift in Sources */,
+				14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */,
 				14AD303B22119128008DEADC /* StateLogger.swift in Sources */,
 				14AD30502211B4D4008DEADC /* AppDelegate.swift in Sources */,
 				14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */,
@@ -349,18 +308,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				14AD302C2211860A008DEADC /* Tinkoff_chatUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		14AD30402211B306008DEADC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14AD30412211B306008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */,
-				14AD30422211B306008DEADC /* ViewController.swift in Sources */,
-				14AD30432211B306008DEADC /* AppDelegate.swift in Sources */,
-				14AD30442211B306008DEADC /* StateLogger.swift in Sources */,
-				14AD30452211B306008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,44 +582,6 @@
 			};
 			name = Release;
 		};
-		14AD304C2211B306008DEADC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28XXG6S5AU;
-				INFOPLIST_FILE = "Tinkoff_chat copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.xrobotics.Tinkoff-chat";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		14AD304D2211B306008DEADC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28XXG6S5AU;
-				INFOPLIST_FILE = "Tinkoff_chat copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.xrobotics.Tinkoff-chat";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -708,15 +617,6 @@
 			buildConfigurations = (
 				14AD30372211860A008DEADC /* Debug */,
 				14AD30382211860A008DEADC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		14AD304B2211B306008DEADC /* Build configuration list for PBXNativeTarget "DEBUG" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				14AD304C2211B306008DEADC /* Debug */,
-				14AD304D2211B306008DEADC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

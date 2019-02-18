@@ -34,9 +34,6 @@ class StateLogger {
     
     private init(){}
     
-    /// Previous/Starting state of our App
-    private var lastState: String = "Not running"
-    
     /**
         Function of logging current state's transition information
      ## Important Notes ##
@@ -44,21 +41,25 @@ class StateLogger {
      Method understands if the calling function has "Will" in it's name and
      automaticly makes a decision about current state of the App.
     */
-    func appStateTransitionInfo(_ fromFunction: String, to state: String) {
-        if fromFunction.contains("Will"), lastState != state {
-            self.printInfo(about: "Application will move from \(lastState) to \(state): \(fromFunction)")
-        } else {
-            self.printInfo(about: "Application moved from \(lastState) to \(state): \(fromFunction)")
+    func appStateTransitionInfo(_ fromFunction: String, from oldState: String, to newState: String) {
+        if oldState != newState {
+            if fromFunction.contains("Will") {
+                self.printLog(about: "Application will move from \(oldState) to \(newState): \(fromFunction)")
+            } else {
+                self.printLog(about: "Application moved from \(oldState) to \(newState): \(fromFunction)")
 
+            }
+        } else {
+            self.printLog(about: "ERROR occured in StateLogger")
         }
-        lastState = state // updating state
+        
     }
     
     /**
       Just prints a string.
       Uses DEBUG target to enable/disable printing
     */
-    func printInfo(about: String) {
+    func printLog(about: String) {
         #if DEBUG
         print(about)
         #endif

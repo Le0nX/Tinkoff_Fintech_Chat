@@ -20,28 +20,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         /// Use of applicationState extensions helps us to immediately get current state string
-        logger.appStateTransitionInfo(#function, to: "\(UIApplication.shared.applicationState)")
+        logger.appStateTransitionInfo(#function, from: "Not running", to: "\(UIApplication.shared.applicationState)")
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-       logger.appStateTransitionInfo(#function, to: "inactive")
+        logger.appStateTransitionInfo(#function, from:"\(UIApplication.shared.applicationState)", to: "inactive")
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        logger.appStateTransitionInfo(#function, to: "\(UIApplication.shared.applicationState)")
+        logger.appStateTransitionInfo(#function, from: "inactive", to: "\(UIApplication.shared.applicationState)")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        logger.appStateTransitionInfo(#function, to: "inactive")
+        logger.appStateTransitionInfo(#function, from: "\(UIApplication.shared.applicationState)", to: "inactive")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        logger.appStateTransitionInfo(#function, to: "\(UIApplication.shared.applicationState)")
+        logger.appStateTransitionInfo(#function, from: "inactive", to: "\(UIApplication.shared.applicationState)")
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        logger.appStateTransitionInfo(#function, to: "not running")
+        logger.appStateTransitionInfo(#function, from: "\(UIApplication.shared.applicationState)", to: "not running")
         self.saveContext()
     }
 
