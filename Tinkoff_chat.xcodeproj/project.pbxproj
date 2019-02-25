@@ -25,6 +25,11 @@
 		14EC890A222411F700F6A1B4 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC8909222411F700F6A1B4 /* Conversation.swift */; };
 		14EC890C2224176600F6A1B4 /* Date+readableFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC890B2224176600F6A1B4 /* Date+readableFormat.swift */; };
 		14EC890F222422F800F6A1B4 /* MessageCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC890E222422F800F6A1B4 /* MessageCellConfiguration.swift */; };
+		14EC89112224242E00F6A1B4 /* ConversationCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC89102224242E00F6A1B4 /* ConversationCellConfiguration.swift */; };
+		14EC891322242A3F00F6A1B4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC891222242A3F00F6A1B4 /* MessageCell.swift */; };
+		14EC89152224337400F6A1B4 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC89142224337400F6A1B4 /* ConversationCell.swift */; };
+		14EC89172224645900F6A1B4 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC89162224645900F6A1B4 /* ConversationViewController.swift */; };
+		14EC89192224665800F6A1B4 /* ConversationViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC89182224665800F6A1B4 /* ConversationViewController+UITableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +75,11 @@
 		14EC8909222411F700F6A1B4 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		14EC890B2224176600F6A1B4 /* Date+readableFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+readableFormat.swift"; sourceTree = "<group>"; };
 		14EC890E222422F800F6A1B4 /* MessageCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellConfiguration.swift; sourceTree = "<group>"; };
+		14EC89102224242E00F6A1B4 /* ConversationCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellConfiguration.swift; sourceTree = "<group>"; };
+		14EC891222242A3F00F6A1B4 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		14EC89142224337400F6A1B4 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		14EC89162224645900F6A1B4 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		14EC89182224665800F6A1B4 /* ConversationViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +178,7 @@
 				14EC89032223F7D500F6A1B4 /* ConversationsListVC+UItableViewDataSource.swift */,
 				14EC89052223F81C00F6A1B4 /* ConversationsListVC+UITableViewDelegate.swift */,
 				14EC890B2224176600F6A1B4 /* Date+readableFormat.swift */,
+				14EC89182224665800F6A1B4 /* ConversationViewController+UITableViewDataSource.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -177,6 +188,7 @@
 			children = (
 				14AD300A22118609008DEADC /* ProfileViewController.swift */,
 				14EC88FA2223A3A700F6A1B4 /* ConversationsListViewController.swift */,
+				14EC89162224645900F6A1B4 /* ConversationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -194,6 +206,8 @@
 			children = (
 				14AD300C22118609008DEADC /* Main.storyboard */,
 				14AD30142211860A008DEADC /* LaunchScreen.storyboard */,
+				14EC891222242A3F00F6A1B4 /* MessageCell.swift */,
+				14EC89142224337400F6A1B4 /* ConversationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +234,7 @@
 			children = (
 				14EC8909222411F700F6A1B4 /* Conversation.swift */,
 				14EC890E222422F800F6A1B4 /* MessageCellConfiguration.swift */,
+				14EC89102224242E00F6A1B4 /* ConversationCellConfiguration.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -355,19 +370,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14EC89192224665800F6A1B4 /* ConversationViewController+UITableViewDataSource.swift in Sources */,
 				14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */,
 				14EC890C2224176600F6A1B4 /* Date+readableFormat.swift in Sources */,
 				14EC89062223F81C00F6A1B4 /* ConversationsListVC+UITableViewDelegate.swift in Sources */,
 				14DA2695221B26E80078B4CD /* UIView+anchor.swift in Sources */,
 				14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */,
+				14EC89112224242E00F6A1B4 /* ConversationCellConfiguration.swift in Sources */,
 				14AD303B22119128008DEADC /* StateLogger.swift in Sources */,
 				14EC890A222411F700F6A1B4 /* Conversation.swift in Sources */,
 				14EC89042223F7D500F6A1B4 /* ConversationsListVC+UItableViewDataSource.swift in Sources */,
 				14EC890F222422F800F6A1B4 /* MessageCellConfiguration.swift in Sources */,
+				14EC89172224645900F6A1B4 /* ConversationViewController.swift in Sources */,
 				14AD30502211B4D4008DEADC /* AppDelegate.swift in Sources */,
 				14EC88FB2223A3A700F6A1B4 /* ConversationsListViewController.swift in Sources */,
+				14EC89152224337400F6A1B4 /* ConversationCell.swift in Sources */,
 				14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */,
 				14EC890822240B9B00F6A1B4 /* DataService.swift in Sources */,
+				14EC891322242A3F00F6A1B4 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

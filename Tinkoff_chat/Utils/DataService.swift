@@ -14,8 +14,12 @@ public class DataService {
     private init(){}
     
     private let conversations: [Conversation] = [
-        Conversation(name:"John Mcclane", message:"Hi", isOnline: true, date: Date.from(year: 2019, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
-        Conversation(name:"John Mccarty", message:"Hi", isOnline: true, date: Date.from(year: 2019, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")])
+        Conversation(name:"John Mcclane", message:"Hi", online: true, date: Date.from(year: 2018, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау"),Conversation.Message.income("Ауууу"),Conversation.Message.outcome("Привет")]),
+        Conversation(name:"Lucy Armstrong", message:"Hi", online: false, date: Date.from(year: 2019, month: 02, day: 25), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
+        Conversation(name:"John Mccarty", message:"Hi", online: true, date: Date.from(year: 2019, month: 02, day: 25), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
+        Conversation(name:"Bob Dylan", message:"Hi", online: false, date: Date.from(year: 2019, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
+        Conversation(name:"John Mccarty", message:"Hi", online: true, date: Date.from(year: 2017, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
+        Conversation(name:"Katy Perry", message:"Hi", online: false, date: Date.from(year: 2019, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
     ]
     
     func getConversations() -> [Conversation] {
@@ -23,10 +27,10 @@ public class DataService {
     }
     
     func getOnlineConversations() -> [Conversation] {
-        return conversations.filter{$0.isOnline}
+        return conversations.filter{$0.online}
     }
     
     func getOfflineConversations() -> [Conversation] {
-        return conversations.filter{!$0.isOnline}
+        return conversations.filter{!$0.online && ($0.message != nil)}
     }
 }

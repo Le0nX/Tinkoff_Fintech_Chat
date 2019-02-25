@@ -10,6 +10,8 @@ import UIKit
 
 class ConversationsListViewController: UIViewController {
 
+    let dataService = DataService.shared
+    
     @IBOutlet internal var tableView: UITableView! {
         didSet {
             /// трюк, чтобы UITableView не отрисовывал пустые ячейки, после того, как отрисовал все нужные ячейки
@@ -28,6 +30,25 @@ class ConversationsListViewController: UIViewController {
     }
     
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ConversationSegue", let indexPath = sender as? IndexPath {
+            let conversationViewController = segue.destination as! ConversationViewController
+            let conversation: Conversation
+            switch indexPath.section {
+            case 0:
+                conversation = dataService.getOnlineConversations()[indexPath.row]
+            default:
+                conversation = dataService.getOfflineConversations()[indexPath.row]
+            }
+            conversationViewController.conversation = conversation
+            
+            let backButton = UIBarButtonItem()
+            backButton.title = ""
+            navigationItem.backBarButtonItem = backButton
+        } else {
+            super.prepare(for: segue, sender: sender)
+        }
+    }
     /*
     // MARK: - Navigation
 

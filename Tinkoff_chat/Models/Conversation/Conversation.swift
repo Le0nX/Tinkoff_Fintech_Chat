@@ -12,7 +12,7 @@ struct Conversation {
     
     var name: String?
     var message: String?
-    var isOnline: Bool
+    var online: Bool
     var date: Date?
     var hasUnreadMessages: Bool
     var history: [Message]

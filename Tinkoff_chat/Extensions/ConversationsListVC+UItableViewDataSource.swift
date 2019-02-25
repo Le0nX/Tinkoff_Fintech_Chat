@@ -19,15 +19,43 @@ enum TableSection: Int {
 extension ConversationsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Online"
+        if let tableSection = TableSection(rawValue: section) {
+            switch tableSection {
+            case .online:
+                return "Online"
+            default:
+                return "History"
+            }
+        }
+        return ""
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if let tableSection = TableSection(rawValue: section) {
+            switch tableSection {
+            case .online:
+                return dataService.getOnlineConversations().count
+            default:
+                return dataService.getOfflineConversations().count
+            }
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConversationCell", for: indexPath) as! ConversationCell
+        let conversation: Conversation
+        switch indexPath.section {
+        case 0:
+            conversation = dataService.getOnlineConversations()[indexPath.row]
+        default:
+            conversation = dataService.getOfflineConversations()[indexPath.row]
+        }
+        cell.name = conversation.name
+        cell.message = conversation.message
+        cell.date = conversation.date
+        cell.hasUnreadMessages = conversation.hasUnreadMessages
+        cell.online = conversation.online
         return cell
     }
     
