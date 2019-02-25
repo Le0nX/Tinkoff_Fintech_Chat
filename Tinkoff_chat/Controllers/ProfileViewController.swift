@@ -70,7 +70,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidAppear(animated)
         print(editBtn.frame) // frame с размерами после использования Auto layout
         
-        prepareViews()
         logger.printLog(about: #function)
     }
     
@@ -83,6 +82,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        prepareViews()
         logger.printLog(about: #function)
     }
     

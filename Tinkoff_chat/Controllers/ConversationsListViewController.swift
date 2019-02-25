@@ -10,10 +10,21 @@ import UIKit
 
 class ConversationsListViewController: UIViewController {
 
+    @IBOutlet internal var tableView: UITableView! {
+        didSet {
+            /// трюк, чтобы UITableView не отрисовывал пустые ячейки, после того, как отрисовал все нужные ячейки
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.tableFooterView = UIView()
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
 
