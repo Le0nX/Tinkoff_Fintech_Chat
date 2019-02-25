@@ -98,6 +98,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         logger.printLog(about: #function)
     }
     
+    
+    @IBAction func exitBtnTapped (_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func editUsernamePhoto(_ sender: Any) {
         print("Выбери изображение профиля") /// task 1.6
         chooseImageAllert()
@@ -124,7 +129,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         profileImage.layer.cornerRadius = widthPhotoBtn / 2
         profileImage.clipsToBounds = true
         
-        editBtn.layer.cornerRadius = 10
+        editBtn.layer.cornerRadius = 15
         editBtn.layer.borderColor = UIColor.black.cgColor
         editBtn.layer.borderWidth = 2.0
         editBtn.clipsToBounds = true

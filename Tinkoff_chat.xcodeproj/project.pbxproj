@@ -18,6 +18,7 @@
 		14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */; };
 		14AD30502211B4D4008DEADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300822118609008DEADC /* AppDelegate.swift */; };
 		14DA2695221B26E80078B4CD /* UIView+anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA2694221B26E80078B4CD /* UIView+anchor.swift */; };
+		14EC88FB2223A3A700F6A1B4 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC88FA2223A3A700F6A1B4 /* ConversationsListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplicationState+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		14AD304F2211B306008DEADC /* Tinkoff_chat copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tinkoff_chat copy-Info.plist"; path = "/Users/le0nx/wrk/TINKOFF/Tinkoff_chat/Tinkoff_chat copy-Info.plist"; sourceTree = "<absolute>"; };
 		14DA2694221B26E80078B4CD /* UIView+anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+anchor.swift"; sourceTree = "<group>"; };
+		14EC88FA2223A3A700F6A1B4 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				14AD3039221190F1008DEADC /* Utils */,
 				14AD300822118609008DEADC /* AppDelegate.swift */,
 				14AD300A22118609008DEADC /* ProfileViewController.swift */,
+				14EC88FA2223A3A700F6A1B4 /* ConversationsListViewController.swift */,
 				14AD300C22118609008DEADC /* Main.storyboard */,
 				14AD30122211860A008DEADC /* Assets.xcassets */,
 				14AD30142211860A008DEADC /* LaunchScreen.storyboard */,
@@ -291,6 +294,7 @@
 				14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */,
 				14AD303B22119128008DEADC /* StateLogger.swift in Sources */,
 				14AD30502211B4D4008DEADC /* AppDelegate.swift in Sources */,
+				14EC88FB2223A3A700F6A1B4 /* ConversationsListViewController.swift in Sources */,
 				14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
