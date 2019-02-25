@@ -22,36 +22,36 @@
                                 <rect key="frame" x="0.0" y="111" width="320" height="457"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" id="IOA-zD-hNw" customClass="ConversationCell" customModule="Tinkoff_chat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConversationCell" id="epM-jW-JlZ" customClass="ConversationCell" customModule="Tinkoff_chat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IOA-zD-hNw" id="eQp-Hd-H55" customClass="ConversationCell" customModule="Tinkoff_chat" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="epM-jW-JlZ" id="iuq-Sp-AsU">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ewj-UF-l1c">
-                                                    <rect key="frame" x="8" y="5" width="304" height="33.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0MI-T1-ZoB">
+                                                    <rect key="frame" x="5" y="5" width="310" height="33.5"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="137" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-Aa-gpe">
-                                                            <rect key="frame" x="0.0" y="0.0" width="299.5" height="20.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BUr-D6-xZV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Майк Вазовски" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCT-Xk-2jF">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Майк Вазовски!" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3N-GL-CFU" userLabel="NameLbl">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="208" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="10:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbQ-Dn-pW3">
-                                                                    <rect key="frame" x="259.5" y="0.0" width="40" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20:30" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxt-dM-uSd" userLabel="DateLbl">
+                                                                    <rect key="frame" x="218" y="0.0" width="92" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Привет, Салли!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ioy-uq-CqJ">
-                                                            <rect key="frame" x="0.0" y="21.5" width="121.5" height="12"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="сообщенька" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugx-ea-7rH" userLabel="MessageLbl">
+                                                            <rect key="frame" x="0.0" y="30" width="310" height="3.5"/>
+                                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -59,16 +59,17 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ewj-UF-l1c" firstAttribute="leading" secondItem="eQp-Hd-H55" secondAttribute="leading" constant="8" id="2Vq-wo-Osg"/>
-                                                <constraint firstAttribute="bottom" secondItem="ewj-UF-l1c" secondAttribute="bottom" constant="5" id="FWi-gp-KdH"/>
-                                                <constraint firstItem="ewj-UF-l1c" firstAttribute="top" secondItem="eQp-Hd-H55" secondAttribute="top" constant="5" id="UQG-5s-xpP"/>
-                                                <constraint firstAttribute="trailing" secondItem="ewj-UF-l1c" secondAttribute="trailing" constant="8" id="y75-Tq-Ete"/>
+                                                <constraint firstAttribute="bottom" secondItem="0MI-T1-ZoB" secondAttribute="bottom" constant="5" id="GSL-cb-3aM"/>
+                                                <constraint firstItem="0MI-T1-ZoB" firstAttribute="leading" secondItem="iuq-Sp-AsU" secondAttribute="leading" constant="5" id="Hvy-mE-gW6"/>
+                                                <constraint firstItem="0MI-T1-ZoB" firstAttribute="top" secondItem="iuq-Sp-AsU" secondAttribute="top" constant="5" id="LON-I0-iZI"/>
+                                                <constraint firstItem="J3N-GL-CFU" firstAttribute="width" secondItem="iuq-Sp-AsU" secondAttribute="width" multiplier="0.65" id="MH9-Rj-pVE"/>
+                                                <constraint firstAttribute="trailing" secondItem="0MI-T1-ZoB" secondAttribute="trailing" constant="5" id="Pkj-LD-ie4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dateLbl" destination="BbQ-Dn-pW3" id="zKk-oL-9iX"/>
-                                            <outlet property="messageLbl" destination="Ioy-uq-CqJ" id="wNM-k7-3aK"/>
-                                            <outlet property="nameLbl" destination="pCT-Xk-2jF" id="Gnu-1m-IvE"/>
+                                            <outlet property="dateLbl" destination="Nxt-dM-uSd" id="aH4-mN-587"/>
+                                            <outlet property="messageLbl" destination="ugx-ea-7rH" id="7zb-Or-moh"/>
+                                            <outlet property="nameLbl" destination="J3N-GL-CFU" id="eGL-tV-gqv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -247,7 +248,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="messageLbl" destination="SSk-Ee-MxE" id="x8M-9W-I67"/>
+                                            <outlet property="messageLbl" destination="SSk-Ee-MxE" id="A69-Rf-RZf"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageOutcomeCell" id="1Nc-BT-uHL" customClass="MessageCell" customModule="Tinkoff_chat" customModuleProvider="target">
@@ -290,7 +291,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="messageLbl" destination="Ill-UA-IDy" id="zYH-lI-eFU"/>
+                                            <outlet property="messageLbl" destination="Ill-UA-IDy" id="PJC-5L-Ijy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

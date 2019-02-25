@@ -18,12 +18,18 @@ extension Date {
        - day: The desired day
      - Returns: A `Date` object
     */
-    static func from(year: Int, month: Int, day: Int) -> Date? {
+    static func from(year: Int, month: Int, day: Int, hour: Int?, minute: Int?) -> Date? {
         let calendar = Calendar(identifier: .gregorian)
         var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month
         dateComponents.day = day
+        if let hour = hour {
+            dateComponents.hour = hour
+        }
+        if let minute = minute {
+            dateComponents.minute = minute
+        }
         return calendar.date(from: dateComponents) ?? nil
     }
 }

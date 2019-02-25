@@ -18,6 +18,10 @@ enum TableSection: Int {
 
 extension ConversationsListViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let tableSection = TableSection(rawValue: section) {
             switch tableSection {

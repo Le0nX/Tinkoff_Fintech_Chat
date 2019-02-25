@@ -14,12 +14,22 @@ public class DataService {
     private init(){}
     
     private let conversations: [Conversation] = [
-        Conversation(name:"John Mcclane", message:"Hi", online: true, date: Date.from(year: 2018, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау"),Conversation.Message.income("Ауууу"),Conversation.Message.outcome("Привет")]),
-        Conversation(name:"Lucy Armstrong", message:"Hi", online: false, date: Date.from(year: 2019, month: 02, day: 25), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
-        Conversation(name:"John Mccarty", message:"Hi", online: true, date: Date.from(year: 2019, month: 02, day: 25), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
-        Conversation(name:"Bob Dylan", message:"Hi", online: false, date: Date.from(year: 2019, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
-        Conversation(name:"John Mccarty", message:"Hi", online: true, date: Date.from(year: 2017, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
-        Conversation(name:"Katy Perry", message:"Hi", online: false, date: Date.from(year: 2019, month: 03, day: 13), hasUnreadMessages: true, history: [Conversation.Message.income("Ау")]),
+        Conversation(name:"John Mcclane", message:"Hello", online: true, date: Date.from(year: 2018, month: 03, day: 13, hour: 22, minute: 12), hasUnreadMessages: true, history: [Conversation.Message.income("Hello, my friend! How are you???Hello, my friend! How are you???Hello, my friend! How are you???Hello, my friend! How are you???Hello, my friend! How are you???"),Conversation.Message.income("Ауууу"),Conversation.Message.outcome("Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!"),Conversation.Message.income("Hello")]),
+        
+        Conversation(name:"John Mcclane", message:"Hello", online: true, date: Date.from(year: 2019, month: 02, day: 25, hour: 22, minute: 12), hasUnreadMessages: true, history: [Conversation.Message.income("Hello, my friend! How are you???Hello, my friend! How are you???Hello, my friend! How are you???Hello, my friend! How are you???Hello, my friend! How are you???"),Conversation.Message.income("Ауууу"),Conversation.Message.outcome("Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!Привет! У меня все ок!"),Conversation.Message.income("Hello")]),
+        
+        Conversation(name:"Lucy Armstrong", message:"Heeeeey", online: false, date: Date.from(year: 2019, month: 02, day: 25, hour: 12, minute: 35), hasUnreadMessages: false, history: [Conversation.Message.income("Heeeeey")]),
+        
+        Conversation(name:"Lucy Jamerson", message:"Oh my god!", online: true, date: Date.from(year: 2019, month: 02, day: 25, hour: 12, minute: 35), hasUnreadMessages: false, history: [Conversation.Message.income("Oh my god!")]),
+        
+        Conversation(name:"Narta Huley", message:"Whats up?", online: false, date: Date.from(year: 2019, month: 02, day: 25, hour: 11, minute: 34), hasUnreadMessages: true, history: [Conversation.Message.income("Whats up?")]),
+        Conversation(name:"Jane Jane", message:"Yooooooo!", online: false, date: Date.from(year: 2019, month: 02, day: 25, hour: 23, minute: 23), hasUnreadMessages: false, history: [Conversation.Message.income("Yooooooo!"),Conversation.Message.income("Ауууу"),Conversation.Message.outcome("Привет")]),
+        Conversation(name:"Peter Locky", message: nil, online: true, date: Date.from(year: 2019, month: 02, day: 25, hour: nil, minute: nil), hasUnreadMessages: true, history: []),
+        Conversation(name:"Archy Linus", message:"Man, are you here?", online: true, date: Date.from(year: 2018, month: 02, day: 25, hour: nil, minute: nil), hasUnreadMessages: true, history: [Conversation.Message.income("Man, are you here?")]),
+        Conversation(name:"Naman Ble", message: nil, online: true, date: Date.from(year: 2019, month: 02, day: 25, hour: nil, minute: nil), hasUnreadMessages: false, history: []),
+        Conversation(name:"George Polman", message:"Hi", online: true, date: Date.from(year: 2019, month: 02, day: 25, hour: 11, minute: 45), hasUnreadMessages: false, history: [Conversation.Message.income("Hi"), Conversation.Message.outcome("Hello")]),
+        Conversation(name:"Vlad Gang", message:"Hi", online: false, date: Date.from(year: 2018, month: 02, day: 25, hour: 01, minute: 23), hasUnreadMessages: false, history: [Conversation.Message.income("Hi")]),
+        
     ]
     
     func getConversations() -> [Conversation] {

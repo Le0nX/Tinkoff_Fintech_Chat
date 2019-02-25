@@ -26,13 +26,14 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
             if message == nil {
                 messageLbl.font = UIFont(name: "Arial", size: 18)
             }
-            messageLbl.text = message
+            messageLbl.text = message ?? "No messages yet"
         }
     }
     
     var date: Date? {
         didSet {
-            guard let date = date else { return }
+            guard let date = date, message != nil else {dateLbl.text = ""; return }
+//            guard  let message = message else { dateLbl.text = ""; return }
             
             let dateFormatter = DateFormatter()
             let calendar = Calendar.current
