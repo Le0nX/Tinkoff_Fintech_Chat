@@ -34,10 +34,10 @@
 }
 
 - (void)choosedThemeButton:(UIButton *)sender {
-    if (sender == [self.themeButtons objectAtIndex:0]) {
+    if (sender == [themeButtons objectAtIndex:0]) {
         [_delegate themesViewController:self didSelect:[_model theme1]];
         [[self.navigationController navigationBar] setBarTintColor:[_model theme1]];
-    } else if (sender == [self.themeButtons objectAtIndex:1]) {
+    } else if (sender == [themeButtons objectAtIndex:1]) {
         [_delegate themesViewController:self didSelect:[_model theme2]];
         [[self.navigationController navigationBar] setBarTintColor:[_model theme2]];
     } else {
@@ -47,7 +47,7 @@
 }
 
 - (void)dealloc {
-    [_themeButtons release];
+    [themeButtons release];
     [_model release];
     [super dealloc];
 }

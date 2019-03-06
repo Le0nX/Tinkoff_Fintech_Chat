@@ -17,12 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ThemesViewController : UIViewController {
     id <ThemesViewControllerDelegate> _delegate;
     Themes* _model;
-    IBOutletCollection(UIButton) NSArray *_themeButtons;
+    IBOutletCollection(UIButton) NSArray *themeButtons;
 }
 
 ///TODO weak
 @property (weak, nonatomic) id<ThemesViewControllerDelegate> delegate;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *themeButtons;
+//@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *themeButtons;
 
 - (IBAction)choosedThemeButton:(UIButton *)sender;
 
