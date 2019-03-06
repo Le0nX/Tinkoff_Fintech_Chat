@@ -85,6 +85,11 @@
                         <viewLayoutGuide key="safeArea" id="473-qB-BJA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tinkoff Chat" id="FUs-sl-2Xw">
+                        <barButtonItem key="leftBarButtonItem" title="Themes" id="SCh-K5-sAP">
+                            <connections>
+                                <segue destination="g6W-en-uRW" kind="presentation" identifier="ThemesSegue" id="qfE-YE-Y4s"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Профиль" id="xYv-ap-7LF">
                             <connections>
                                 <segue destination="4kW-yl-ijs" kind="presentation" id="4OO-V6-ucq"/>
@@ -99,6 +104,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gix-W5-vKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1548.75" y="800.70422535211264"/>
+        </scene>
+        <!--Themes View Controller-->
+        <scene sceneID="YhZ-S1-Gzz">
+            <objects>
+                <viewController id="7g5-aq-zyh" customClass="ThemesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i9A-9j-pL5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Hj2-1J-Nq6">
+                                <rect key="frame" x="80" y="209" width="160" height="150"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLR-3R-aoD">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Theme 1"/>
+                                        <connections>
+                                            <action selector="choosedThemeButton:" destination="7g5-aq-zyh" eventType="touchUpInside" id="fQu-jG-aDQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zA5-mO-mW4">
+                                        <rect key="frame" x="0.0" y="60" width="160" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Theme 2"/>
+                                        <connections>
+                                            <action selector="choosedThemeButton:" destination="7g5-aq-zyh" eventType="touchUpInside" id="fIp-zy-bS0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sM-8H-LMJ">
+                                        <rect key="frame" x="0.0" y="120" width="160" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Theme 3"/>
+                                        <connections>
+                                            <action selector="choosedThemeButton:" destination="7g5-aq-zyh" eventType="touchUpInside" id="Pc1-fE-Okp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hj2-1J-Nq6" firstAttribute="centerY" secondItem="i9A-9j-pL5" secondAttribute="centerY" id="IXq-kT-0Ig"/>
+                            <constraint firstItem="Hj2-1J-Nq6" firstAttribute="centerX" secondItem="i9A-9j-pL5" secondAttribute="centerX" id="Rc2-ww-Shp"/>
+                            <constraint firstItem="NLR-3R-aoD" firstAttribute="width" secondItem="i9A-9j-pL5" secondAttribute="width" multiplier="0.5" id="sJk-mM-Owp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qb4-If-J3N"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xVg-Gc-gcU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="hte-gQ-y0P">
+                            <connections>
+                                <segue destination="zCr-T2-gyA" kind="unwind" unwindAction="unwindToConversationsVCWithUnwindSegue:" id="5BE-aU-R87"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outletCollection property="themeButtons" destination="3sM-8H-LMJ" id="LmM-g9-wFI"/>
+                        <outletCollection property="themeButtons" destination="zA5-mO-mW4" id="PZA-B1-icn"/>
+                        <outletCollection property="themeButtons" destination="NLR-3R-aoD" id="Pn7-Gk-M4r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvn-OV-k7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zCr-T2-gyA" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="352.5" y="-678.16901408450701"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -342,6 +411,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rx7-w7-Za0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-645" y="64.436619718309856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="E97-nY-4Le">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g6W-en-uRW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cW9-MG-UuW">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7g5-aq-zyh" kind="relationship" relationship="rootViewController" id="wsk-hf-byT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2o0-WZ-QDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-645" y="-678"/>
         </scene>
     </scenes>
     <resources>

@@ -19,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        /// Достаем данные из UserDefaults
+        if let savedData = UserDefaults.standard.value(forKey: "SavedTheme") as? Data, let theme = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedData) as? UIColor {
+            UINavigationBar.appearance().barTintColor = theme
+        } else {
+            UINavigationBar.appearance().barTintColor = UIColor.white
+        }
+        
         /// Use of applicationState extensions helps us to immediately get current state string
         logger.appStateTransitionInfo(#function, from: "Not running", to: "\(UIApplication.shared.applicationState)")
         return true

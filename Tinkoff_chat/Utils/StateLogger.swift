@@ -64,4 +64,13 @@ class StateLogger {
         print(about)
         #endif
     }
+    
+    /// Метод логирования выбранной темы
+    ///
+    /// - Parameter selectedTheme: текущая тема
+    func logThemeChanged(selectedTheme: UIColor){
+        #if DEBUG
+        print("Selected theme is \(selectedTheme)")
+        #endif
+    }
 }

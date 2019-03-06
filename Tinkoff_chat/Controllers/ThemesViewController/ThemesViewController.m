@@ -7,26 +7,51 @@
 //
 
 #import "ThemesViewController.h"
+#import "Themes.h"
+#import "ThemesViewControllerDelegate.h"
 
-@interface ThemesViewController ()
-
-@end
 
 @implementation ThemesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _model = [[Themes alloc] initColor1:UIColor.redColor
+                                 color2:UIColor.blueColor
+                                 color3:UIColor.greenColor];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.view setBackgroundColor:[[self.navigationController navigationBar] barTintColor]];
 }
-*/
+
+- (void) setDelegate:(id<ThemesViewControllerDelegate>)delegate{
+    _delegate = delegate;
+}
+
+- (id<ThemesViewControllerDelegate>) delegate {
+    return _delegate;
+}
+
+- (void)choosedThemeButton:(UIButton *)sender {
+    if (sender == [self.themeButtons objectAtIndex:0]) {
+        [_delegate themesViewController:self didSelect:[_model theme1]];
+        [[self.navigationController navigationBar] setBarTintColor:[_model theme1]];
+    } else if (sender == [self.themeButtons objectAtIndex:1]) {
+        [_delegate themesViewController:self didSelect:[_model theme2]];
+        [[self.navigationController navigationBar] setBarTintColor:[_model theme2]];
+    } else {
+        [_delegate themesViewController:self didSelect:[_model theme3]];
+        [[self.navigationController navigationBar] setBarTintColor:[_model theme3]];
+    }
+}
+
+- (void)dealloc {
+    [_themeButtons release];
+    [_model release];
+    [super dealloc];
+}
+
+
 
 @end
