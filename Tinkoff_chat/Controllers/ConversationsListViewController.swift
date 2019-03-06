@@ -49,6 +49,10 @@ class ConversationsListViewController: UIViewController {
             super.prepare(for: segue, sender: sender)
         }
     }
+    
+    @IBAction func unwindToConversationsVC(unwindSegue: UIStoryboardSegue) {
+        
+    }
     /*
     // MARK: - Navigation
 

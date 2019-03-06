@@ -99,9 +99,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     
-    @IBAction func exitBtnTapped (_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func exitBtnTapped (_ sender: UIBarButtonItem) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
     @IBAction func editUsernamePhoto(_ sender: Any) {
         print("Выбери изображение профиля") /// task 1.6
@@ -146,7 +146,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        let setImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        weak var setImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         profileImage.contentMode = .scaleToFill
         profileImage.image = setImage
         dismiss(animated: true, completion: nil)
