@@ -32,15 +32,25 @@ public class DataService {
         
     ]
     
+    private var onlineConversations = [Conversation]()
+    private var offlineConversations = [Conversation]()
+    
+    
     func getConversations() -> [Conversation] {
         return conversations
     }
     
     func getOnlineConversations() -> [Conversation] {
-        return conversations.filter{$0.online}
+        if onlineConversations.count == 0 {
+            onlineConversations = conversations.filter{$0.online}
+        }
+        return onlineConversations
     }
     
     func getOfflineConversations() -> [Conversation] {
-        return conversations.filter{!$0.online && ($0.message != nil)}
+        if offlineConversations.count == 0 {
+            offlineConversations = conversations.filter{!$0.online && ($0.message != nil)}
+        }
+        return offlineConversations
     }
 }

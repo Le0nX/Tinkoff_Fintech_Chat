@@ -47,16 +47,16 @@ class ConversationsListViewController: UIViewController {
             navigationItem.backBarButtonItem = backButton
         } else if segue.identifier == "ThemesSegue"{
             guard let themesNavigationVC = segue.destination as? UINavigationController, let themesVC = themesNavigationVC.viewControllers.first as? ThemesViewController else { return }
-            themesVC.delegate = self
+//            themesVC.delegate = self
             
-//            themesVC.changeThemeHandler = { (selectedTheme: UIColor) -> Void in
-//             UINavigationBar.appearance().barTintColor = selectedTheme
-//
-//            /// save theme Data
-//             guard let themeData =  try? NSKeyedArchiver.archivedData(withRootObject: selectedTheme, requiringSecureCoding: false) else { return }
-//             UserDefaults.standard.set(themeData, forKey: "SavedTheme")
-//             StateLogger.shared.logThemeChanged(selectedTheme: selectedTheme)
-//             }
+            themesVC.changeThemeHandler = { (selectedTheme: UIColor) -> Void in
+             UINavigationBar.appearance().barTintColor = selectedTheme
+
+            /// save theme Data
+             guard let themeData =  try? NSKeyedArchiver.archivedData(withRootObject: selectedTheme, requiringSecureCoding: false) else { return }
+             UserDefaults.standard.set(themeData, forKey: "SavedTheme")
+             StateLogger.shared.logThemeChanged(selectedTheme: selectedTheme)
+             }
             
         } else {
             super.prepare(for: segue, sender: sender)

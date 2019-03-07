@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1450B4D3222FE59C00CA8702 /* Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4D2222FE59C00CA8702 /* Themes.m */; };
-		1450B4DD22303FDB00CA8702 /* ThemesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 142C2FB5222FDCD1001815E8 /* ThemesViewController.m */; };
-		1450B4DE2230400B00CA8702 /* ConversationsListVC+ThemesViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4D522300EAC00CA8702 /* ConversationsListVC+ThemesViewControllerDelegate.swift */; };
+		1450B4DF22304F4A00CA8702 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4D722301D3C00CA8702 /* ThemesViewController.swift */; };
 		14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300A22118609008DEADC /* ProfileViewController.swift */; };
 		14AD300E22118609008DEADC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AD300C22118609008DEADC /* Main.storyboard */; };
 		14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300F22118609008DEADC /* Tinkoff_chat.xcdatamodeld */; };
@@ -419,9 +418,8 @@
 				14EC890F222422F800F6A1B4 /* MessageCellConfiguration.swift in Sources */,
 				14EC89172224645900F6A1B4 /* ConversationViewController.swift in Sources */,
 				14AD30502211B4D4008DEADC /* AppDelegate.swift in Sources */,
-				1450B4DE2230400B00CA8702 /* ConversationsListVC+ThemesViewControllerDelegate.swift in Sources */,
+				1450B4DF22304F4A00CA8702 /* ThemesViewController.swift in Sources */,
 				14EC88FB2223A3A700F6A1B4 /* ConversationsListViewController.swift in Sources */,
-				1450B4DD22303FDB00CA8702 /* ThemesViewController.m in Sources */,
 				14EC89152224337400F6A1B4 /* ConversationCell.swift in Sources */,
 				14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */,
 				1450B4D3222FE59C00CA8702 /* Themes.m in Sources */,

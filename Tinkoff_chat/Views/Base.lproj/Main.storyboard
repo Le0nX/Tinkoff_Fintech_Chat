@@ -108,7 +108,7 @@
         <!--Themes View Controller-->
         <scene sceneID="YhZ-S1-Gzz">
             <objects>
-                <viewController id="7g5-aq-zyh" customClass="ThemesViewController" sceneMemberID="viewController">
+                <viewController id="7g5-aq-zyh" customClass="ThemesViewController" customModule="Tinkoff_chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i9A-9j-pL5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
