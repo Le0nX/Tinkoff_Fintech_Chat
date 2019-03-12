@@ -11,14 +11,31 @@ import UIKit
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var editBtn: UIButton!
-    @IBOutlet weak var photoBtn: UIButton!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var photoButton: UIButton!
     
-    @IBOutlet weak var userNameLbl: UILabel!
-    @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var descriptionTextField: UITextField!
     
     let logger = StateLogger.shared
     var pickerCtrl: UIImagePickerController? = UIImagePickerController()
+    
+    var profileInEditing: Bool = false {
+        didSet{
+            photoButton.isHidden = !photoButton.isHidden
+            nameTextField.isHidden = !nameTextField.isHidden
+            descriptionTextField.isHidden = !descriptionTextField.isHidden
+            if profileInEditing {
+                editButton.setTitle("Отменить редактирование", for: .normal)
+            } else {
+                editButton.setTitle("Редактировать", for: .normal)
+            }
+        }
+    }
+    
     
     /**
      Метод init работает по принципу:
@@ -49,8 +66,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidLoad()
         pickerCtrl?.delegate = self
         
-        print(editBtn.frame)
+        print(editButton.frame)
         logger.printLog(about: #function)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
     }
 
     /**
@@ -68,7 +90,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
      */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(editBtn.frame) // frame с размерами после использования Auto layout
+        print(editButton.frame) // frame с размерами после использования Auto layout
         
         logger.printLog(about: #function)
     }
@@ -112,7 +134,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
      Метод подготовки вьюх кнопок и изображения пользователя
      */
     func prepareViews() {
-        let widthPhotoBtn = photoBtn.frame.size.width
+        let widthPhotoBtn = photoButton.frame.size.width
         let rect = CGRect(x: widthPhotoBtn / 4,
                           y: widthPhotoBtn / 4,
                           width: widthPhotoBtn / 2,
@@ -121,18 +143,18 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         let imageView = UIImageView(frame: rect)
         imageView.image = UIImage(named: "slr-camera-2-xxl")
         
-        photoBtn.addSubview(imageView)
+        photoButton.addSubview(imageView)
     
-        photoBtn.layer.cornerRadius = widthPhotoBtn / 2
-        photoBtn.clipsToBounds = true
+        photoButton.layer.cornerRadius = widthPhotoBtn / 2
+        photoButton.clipsToBounds = true
         
         profileImage.layer.cornerRadius = widthPhotoBtn / 2
         profileImage.clipsToBounds = true
         
-        editBtn.layer.cornerRadius = 15
-        editBtn.layer.borderColor = UIColor.black.cgColor
-        editBtn.layer.borderWidth = 2.0
-        editBtn.clipsToBounds = true
+        editButton.layer.cornerRadius = 15
+        editButton.layer.borderColor = UIColor.black.cgColor
+        editButton.layer.borderWidth = 2.0
+        editButton.clipsToBounds = true
     }
     
     func presentGallery() {
@@ -182,6 +204,36 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         alertController.addAction(actionPresentGallery)
         alertController.addAction(actionGetCamera)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
+    @IBAction func editButtonTaped(_ sender: UIButton) {
+        profileInEditing = !profileInEditing
+    }
+    
+    
+    @objc func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let endFrameY = endFrame?.origin.y ?? 0
+            let duration: TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve: UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
+            if endFrameY >= UIScreen.main.bounds.size.height {
+                
+                self.view.frame.origin.y = 0
+                
+            } else {
+                self.view.frame.origin.y = -(endFrame?.size.height ?? 0)
+            }
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
+        }
     }
     
 }
