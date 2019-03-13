@@ -213,6 +213,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="nameHasChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="PCc-s1-YcA"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" text="Tell about yourself:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcI-Gs-vI5">
                                         <rect key="frame" x="0.0" y="28.5" width="288" height="20.5"/>
@@ -225,6 +228,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="descriptionHasChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="cOc-rq-6h0"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>

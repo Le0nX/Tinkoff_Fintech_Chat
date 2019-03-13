@@ -9,10 +9,10 @@
 import Foundation
 
 protocol ProfileDataManager {
-    func getProfile(completion: @escaping (Profile) -> Void)
-    func saveProfile(newProfile: Profile, oldProfile: Profile, completion: @escaping (Error?) -> Void)
+    func getProfile(callback: @escaping (ProfileData) -> Void)
+    func saveProfile(newProfile: ProfileData, oldProfile: ProfileData, callback: @escaping (Error?) -> Void)
 }
 
-enum ErrorHandler: Error {
-    case convertImage
+enum ErrorProfile: Error {
+    case imageToPng
 }

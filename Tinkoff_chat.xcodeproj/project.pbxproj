@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1450B4D3222FE59C00CA8702 /* Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4D2222FE59C00CA8702 /* Themes.m */; };
 		1450B4DF22304F4A00CA8702 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4D722301D3C00CA8702 /* ThemesViewController.swift */; };
 		1450B4E32238A2D100CA8702 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4E22238A2D100CA8702 /* Profile.swift */; };
 		1450B4E62238A44200CA8702 /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4E52238A44200CA8702 /* ProfileDataManager.swift */; };
-		1450B4E82238A70E00CA8702 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4E72238A70E00CA8702 /* GCDDataManager.swift */; };
+		1450B4E92238CD9C00CA8702 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4E72238A70E00CA8702 /* GCDDataManager.swift */; };
+		1450B4EB22392C1800CA8702 /* Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4D2222FE59C00CA8702 /* Themes.m */; };
+		1450B4ED2239630C00CA8702 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B4EC2239630C00CA8702 /* OperationDataManager.swift */; };
 		14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300A22118609008DEADC /* ProfileViewController.swift */; };
 		14AD300E22118609008DEADC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AD300C22118609008DEADC /* Main.storyboard */; };
 		14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300F22118609008DEADC /* Tinkoff_chat.xcdatamodeld */; };
@@ -66,6 +67,7 @@
 		1450B4E22238A2D100CA8702 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		1450B4E52238A44200CA8702 /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
 		1450B4E72238A70E00CA8702 /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
+		1450B4EC2239630C00CA8702 /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		14AD300522118609008DEADC /* Tinkoff_chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinkoff_chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AD300822118609008DEADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14AD300A22118609008DEADC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				1450B4E52238A44200CA8702 /* ProfileDataManager.swift */,
 				1450B4E72238A70E00CA8702 /* GCDDataManager.swift */,
+				1450B4EC2239630C00CA8702 /* OperationDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -430,7 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1450B4E82238A70E00CA8702 /* GCDDataManager.swift in Sources */,
+				1450B4E92238CD9C00CA8702 /* GCDDataManager.swift in Sources */,
 				14EC89192224665800F6A1B4 /* ConversationViewController+UITableViewDataSource.swift in Sources */,
 				14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */,
 				14EC890C2224176600F6A1B4 /* Date+readableFormat.swift in Sources */,
@@ -438,8 +441,10 @@
 				14DA2695221B26E80078B4CD /* UIView+anchor.swift in Sources */,
 				14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */,
 				14EC89112224242E00F6A1B4 /* ConversationCellConfiguration.swift in Sources */,
+				1450B4EB22392C1800CA8702 /* Themes.m in Sources */,
 				14AD303B22119128008DEADC /* StateLogger.swift in Sources */,
 				14EC890A222411F700F6A1B4 /* Conversation.swift in Sources */,
+				1450B4ED2239630C00CA8702 /* OperationDataManager.swift in Sources */,
 				14EC89042223F7D500F6A1B4 /* ConversationsListVC+UItableViewDataSource.swift in Sources */,
 				1450B4E32238A2D100CA8702 /* Profile.swift in Sources */,
 				14EC890F222422F800F6A1B4 /* MessageCellConfiguration.swift in Sources */,
@@ -449,7 +454,6 @@
 				14EC88FB2223A3A700F6A1B4 /* ConversationsListViewController.swift in Sources */,
 				14EC89152224337400F6A1B4 /* ConversationCell.swift in Sources */,
 				14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */,
-				1450B4D3222FE59C00CA8702 /* Themes.m in Sources */,
 				1450B4E62238A44200CA8702 /* ProfileDataManager.swift in Sources */,
 				14EC890822240B9B00F6A1B4 /* DataService.swift in Sources */,
 				14EC891322242A3F00F6A1B4 /* MessageCell.swift in Sources */,

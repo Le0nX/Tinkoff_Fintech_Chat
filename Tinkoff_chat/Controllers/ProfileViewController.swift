@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+    //MARK: - Outlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
@@ -24,11 +24,21 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
     
+    //MARK: - Models
+    var profile: ProfileData!
+    
+    //MARK: - Data Managers
+    var dataManager: ProfileDataManager!
+    let gcdDataManager = GCDDataManager()
+    let operationDataManager = OperationDataManager()
+    
+    //MARK: - Utils
     let logger = StateLogger.shared
     var pickerCtrl: UIImagePickerController? = UIImagePickerController()
     
-    private var savingInProcess = false
-    
+    //MARK: - Controll Helpers
+    private var savingInProcess = false /// находимся в процессе сохранения.
+    private var photoIsEstablished = false /// если есть фото, то дать возможность его удалить
     
     private var profileInEditing: Bool = false {
         didSet{
@@ -38,14 +48,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             gcdButton.isHidden = !gcdButton.isHidden
             operationButton.isHidden = !operationButton.isHidden
             if profileInEditing {
+                gcdButton.isEnabled = false
+                operationButton.isEnabled = false
                 editButton.setTitle("Отменить редактирование", for: .normal)
             } else {
                 editButton.setTitle("Редактировать", for: .normal)
+                updateView()
             }
         }
     }
     
-    
+    //MARK: - ViewController LifeCycle(HW1)
     /**
      Метод init работает по принципу:
      1. Находим .xib
@@ -77,12 +90,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         print(editButton.frame)
         logger.printLog(about: #function)
+    NotificationCenter.default.addObserver(self,selector:#selector(self.keyboardNotification(notification:)), name: UIResponder.keyboardWillChangeFrameNotification,object: nil)
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardNotification(notification:)),
-                                               name: UIResponder.keyboardWillChangeFrameNotification,
-                                               object: nil)
-        // TODO: add tapGestureRecognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(gesture:)))
+        view.addGestureRecognizer(tapGesture)
+        
+        loadProfileSettings()
     }
 
     /**
@@ -130,48 +143,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         logger.printLog(about: #function)
     }
     
-    
-//    @IBAction func exitBtnTapped (_ sender: UIBarButtonItem) {
-//        dismiss(animated: true, completion: nil)
-//    }
-    
+    // MARK: - photoButton routine
     @IBAction func editUsernamePhoto(_ sender: Any) {
         print("Выбери изображение профиля") /// task 1.6
         chooseImageAllert()
-    }
-    
-    /**
-     Метод подготовки вьюх кнопок и изображения пользователя
-     */
-    func prepareViews() {
-        let widthPhotoBtn = photoButton.frame.size.width
-        let rect = CGRect(x: widthPhotoBtn / 4,
-                          y: widthPhotoBtn / 4,
-                          width: widthPhotoBtn / 2,
-                          height: widthPhotoBtn / 2)
-        
-        let imageView = UIImageView(frame: rect)
-        imageView.image = UIImage(named: "slr-camera-2-xxl")
-        
-        photoButton.addSubview(imageView)
-    
-        photoButton.layer.cornerRadius = widthPhotoBtn / 2
-        photoButton.clipsToBounds = true
-        
-        profileImage.layer.cornerRadius = widthPhotoBtn / 2
-        profileImage.clipsToBounds = true
-        
-        editButton.clipsToBounds = true
-        
-        styleProfileButton(editButton, with: UIColor.black.cgColor, cornerRaius: 10)
-        styleProfileButton(gcdButton, with: UIColor.black.cgColor, cornerRaius: 10)
-        styleProfileButton(operationButton, with: UIColor.black.cgColor, cornerRaius: 10)
-    }
-    
-    func styleProfileButton(_ button: UIButton, with borderColor: CGColor, cornerRaius: CGFloat) {
-        button.layer.borderColor = borderColor
-        button.layer.cornerRadius = cornerRaius
-        button.layer.borderWidth = 2.0
     }
     
     func presentGallery() {
@@ -189,6 +164,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         profileImage.contentMode = .scaleToFill
         profileImage.image = setImage
         dismiss(animated: true, completion: nil)
+        prepareSaveButtons()
     }
     
     func getCamera() {
@@ -208,7 +184,19 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     /// Метолд выбора картинки для профиля
     func chooseImageAllert() {
+        
         let alertController = UIAlertController(title: "Выберите картинку", message: nil, preferredStyle: .actionSheet)
+        
+        
+        if photoIsEstablished {
+            let deleteAlertAction = UIAlertAction(title: "Удалить фотографию", style: .destructive) { [weak self] action in
+                guard let `self` = self else { return }
+                self.profileImage.image = UIImage(named: "placeholder-user")
+                self.photoIsEstablished = false
+                self.prepareSaveButtons()
+            }
+            alertController.addAction(deleteAlertAction)
+        }
         
         let actionPresentGallery = UIAlertAction(title: "Установить из галлереи", style: .default) { (action: UIAlertAction) in
             self.presentGallery()
@@ -223,29 +211,149 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //MARK: - UI settings
+    /**
+     Метод подготовки вьюх кнопок и изображения пользователя
+     */
+    func prepareViews() {
+        let widthPhotoBtn = photoButton.frame.size.width
+        let rect = CGRect(x: widthPhotoBtn / 4,
+                          y: widthPhotoBtn / 4,
+                          width: widthPhotoBtn / 2,
+                          height: widthPhotoBtn / 2)
+        
+        let imageView = UIImageView(frame: rect)
+        imageView.image = UIImage(named: "slr-camera-2-xxl")
+        
+        photoButton.addSubview(imageView)
+        
+        photoButton.layer.cornerRadius = widthPhotoBtn / 2
+        photoButton.clipsToBounds = true
+        
+        profileImage.layer.cornerRadius = widthPhotoBtn / 2
+        profileImage.clipsToBounds = true
+        
+        editButton.clipsToBounds = true
+        
+        styleProfileButton(editButton, with: UIColor.black.cgColor, cornerRaius: 10)
+        styleProfileButton(gcdButton, with: UIColor.black.cgColor, cornerRaius: 10)
+        styleProfileButton(operationButton, with: UIColor.black.cgColor, cornerRaius: 10)
+    }
     
+    func styleProfileButton(_ button: UIButton, with borderColor: CGColor, cornerRaius: CGFloat) {
+        button.layer.borderColor = borderColor
+        button.layer.cornerRadius = cornerRaius
+        button.layer.borderWidth = 2.0
+    }
     
+    private func updateView() {
+        userNameLabel.text = profile.name
+        descriptionLabel.text = profile.description
+        profileImage.image = profile.userImage
+    }
+    
+    // MARK: - Profile saving/loading routines
     @IBAction func editButtonTaped(_ sender: UIButton) {
         profileInEditing = !profileInEditing
     }
     
     
     @IBAction func saveProfileGCD(_ sender: UIButton) {
+        dataManager = gcdDataManager
         saveProfileSettings()
     }
     
     @IBAction func saveProfileOperation(_ sender: UIButton) {
+        dataManager = operationDataManager
         saveProfileSettings()
     }
     
-    private func saveProfileSettings() {
-        savingInProcess = true
-        gcdButton.isHidden = true
-        operationButton.isHidden = true
-        activityIndicator.isHidden = false
+    private func loadProfileSettings() {
+        editButton.isHidden = true
+        dataManager = operationDataManager
         activityIndicator.startAnimating()
+        gcdDataManager.getProfile { (profile) in
+            self.profile = profile
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.editButton.isHidden = false
+            // compare with default photo
+            self.photoIsEstablished = UIImage(named: "placeholder-user")!.pngData() != profile.userImage.pngData()
+            self.updateView()
+        }
     }
     
+    private func saveProfileSettings() {
+        // на время сохранения делаем кнопки неактивными
+        savingInProcess = true
+        gcdButton.isEnabled = false
+        operationButton.isEnabled = false
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        //get new profileData from view
+        let newProfileData = ProfileData(name: nameTextField.text!, description: descriptionTextField.text!, userImage: profileImage.image!)
+        
+        // здесь self не делаем weak, т.к. "Passing a block to dispatch_async on a global or main queue will NEVER produce a retain cycle.
+        dataManager.saveProfile(newProfile: newProfileData, oldProfile: profile) { (exception) in
+            if exception == nil {
+                self.profile = newProfileData
+                let alert = UIAlertController(title: "Данные сохранены", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ок", style: .default) { action in
+                    if self.profileInEditing {
+                        self.profileInEditing = false
+                    } else {
+                        self.updateView()
+                    }
+                }
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Ошибка", message: "Не удалось сохранить данные", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ок", style: .default, handler: nil)
+                let tryAgain = UIAlertAction(title: "Повтор", style: .default) { action in
+                    self.saveProfileSettings()
+                }
+                alert.addAction(ok)
+                alert.addAction(tryAgain)
+                self.present(alert, animated: true, completion: nil)
+            }
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.gcdButton.isEnabled = true
+            self.operationButton.isEnabled = true
+            self.savingInProcess = false
+        }
+    }
+    
+    // MARK: - save buttons enable/disable
+    
+    
+    @IBAction func nameHasChanged(_ sender: UITextField) {
+        prepareSaveButtons()
+    }
+    
+    @IBAction func descriptionHasChanged(_ sender: UITextField) {
+        prepareSaveButtons()
+    }
+    
+    private func prepareSaveButtons() {
+        gcdButton.isEnabled = checkGcdButton()
+        operationButton.isEnabled = checkOperationButton()
+    }
+    
+    private func checkGcdButton() -> Bool {
+        return !savingInProcess && (nameTextField.text != "") && ((nameTextField.text != profile.name) || (descriptionTextField.text != profile.description) || (profileImage.image!.pngData() != profile.userImage.pngData()))
+    }
+    
+    private func checkOperationButton() -> Bool {
+        return !savingInProcess && (nameTextField.text != "") && ((nameTextField.text != profile.name) || (descriptionTextField.text != profile.description) || (profileImage.image!.pngData() != profile.userImage.pngData()))
+    }
+    
+    // MARK: - keyboard Routine
+    @objc func dismissKeyboard(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
     
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {

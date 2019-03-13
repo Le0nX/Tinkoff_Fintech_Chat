@@ -53,8 +53,10 @@ class ConversationsListViewController: UIViewController {
              UINavigationBar.appearance().barTintColor = selectedTheme
 
             /// save theme Data
-             guard let themeData =  try? NSKeyedArchiver.archivedData(withRootObject: selectedTheme, requiringSecureCoding: false) else { return }
-             UserDefaults.standard.set(themeData, forKey: "SavedTheme")
+            DispatchQueue.global(qos: .utility).async {
+                 guard let themeData =  try? NSKeyedArchiver.archivedData(withRootObject: selectedTheme, requiringSecureCoding: false) else { return }
+                 UserDefaults.standard.set(themeData, forKey: "SavedTheme")
+            }
              StateLogger.shared.logThemeChanged(selectedTheme: selectedTheme)
              }
             
