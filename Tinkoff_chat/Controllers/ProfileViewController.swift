@@ -164,7 +164,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         profileImage.contentMode = .scaleToFill
         profileImage.image = setImage
         dismiss(animated: true, completion: nil)
-        prepareSaveButtons()
+//        prepareSaveButtons()
+        operationButton.isEnabled = true
+        gcdButton.isEnabled = true
     }
     
     func getCamera() {
