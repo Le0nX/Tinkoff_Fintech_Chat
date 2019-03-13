@@ -13,9 +13,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet var gcdButton: UIButton!
+    @IBOutlet var operationButton: UIButton!
     
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
@@ -23,11 +27,16 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     let logger = StateLogger.shared
     var pickerCtrl: UIImagePickerController? = UIImagePickerController()
     
-    var profileInEditing: Bool = false {
+    private var savingInProcess = false
+    
+    
+    private var profileInEditing: Bool = false {
         didSet{
             photoButton.isHidden = !photoButton.isHidden
             nameTextField.isHidden = !nameTextField.isHidden
             descriptionTextField.isHidden = !descriptionTextField.isHidden
+            gcdButton.isHidden = !gcdButton.isHidden
+            operationButton.isHidden = !operationButton.isHidden
             if profileInEditing {
                 editButton.setTitle("Отменить редактирование", for: .normal)
             } else {
@@ -73,6 +82,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
+        // TODO: add tapGestureRecognizer
     }
 
     /**
@@ -151,10 +161,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         profileImage.layer.cornerRadius = widthPhotoBtn / 2
         profileImage.clipsToBounds = true
         
-        editButton.layer.cornerRadius = 15
-        editButton.layer.borderColor = UIColor.black.cgColor
-        editButton.layer.borderWidth = 2.0
         editButton.clipsToBounds = true
+        
+        styleProfileButton(editButton, with: UIColor.black.cgColor, cornerRaius: 10)
+        styleProfileButton(gcdButton, with: UIColor.black.cgColor, cornerRaius: 10)
+        styleProfileButton(operationButton, with: UIColor.black.cgColor, cornerRaius: 10)
+    }
+    
+    func styleProfileButton(_ button: UIButton, with borderColor: CGColor, cornerRaius: CGFloat) {
+        button.layer.borderColor = borderColor
+        button.layer.cornerRadius = cornerRaius
+        button.layer.borderWidth = 2.0
     }
     
     func presentGallery() {
@@ -210,6 +227,23 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBAction func editButtonTaped(_ sender: UIButton) {
         profileInEditing = !profileInEditing
+    }
+    
+    
+    @IBAction func saveProfileGCD(_ sender: UIButton) {
+        saveProfileSettings()
+    }
+    
+    @IBAction func saveProfileOperation(_ sender: UIButton) {
+        saveProfileSettings()
+    }
+    
+    private func saveProfileSettings() {
+        savingInProcess = true
+        gcdButton.isHidden = true
+        operationButton.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
     
     

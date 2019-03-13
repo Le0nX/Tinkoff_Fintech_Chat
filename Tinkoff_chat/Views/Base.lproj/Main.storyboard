@@ -235,21 +235,48 @@
                                     <action selector="editUsernamePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="27E-IM-ksK"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="dQv-bl-eNU">
+                                <rect key="frame" x="16" y="433" width="288" height="0.0"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sY-47-yzR">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <state key="normal" title="GCD"/>
+                                        <connections>
+                                            <action selector="saveProfileGCD:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X7w-zM-rAc"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfB-WE-69b">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <state key="normal" title="Operation"/>
+                                        <connections>
+                                            <action selector="saveProfileOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i4p-Jq-pkV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mKC-j0-zEt">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="dQv-bl-eNU" firstAttribute="top" secondItem="hkR-He-zos" secondAttribute="bottom" constant="16" id="3C7-cm-O2D"/>
+                            <constraint firstItem="mKC-j0-zEt" firstAttribute="centerX" secondItem="Jdu-iB-S6d" secondAttribute="centerX" id="3cu-YP-YtE"/>
                             <constraint firstItem="qnn-wU-711" firstAttribute="trailing" secondItem="kMM-es-0Qc" secondAttribute="trailing" id="4OC-fG-hh0"/>
                             <constraint firstItem="8nj-3g-Ike" firstAttribute="trailing" secondItem="qnn-wU-711" secondAttribute="trailing" constant="16" id="4ZR-74-mLP"/>
                             <constraint firstItem="qnn-wU-711" firstAttribute="leading" secondItem="8nj-3g-Ike" secondAttribute="leading" constant="16" id="DkE-Pk-PBY"/>
                             <constraint firstItem="hkR-He-zos" firstAttribute="leading" secondItem="8nj-3g-Ike" secondAttribute="leading" constant="16" id="Kxs-71-AWj"/>
+                            <constraint firstItem="mKC-j0-zEt" firstAttribute="centerY" secondItem="Jdu-iB-S6d" secondAttribute="centerY" id="Kzy-lO-CVb"/>
                             <constraint firstItem="hkR-He-zos" firstAttribute="top" secondItem="qnn-wU-711" secondAttribute="bottom" constant="16" id="OMD-2n-8DP"/>
                             <constraint firstItem="kMM-es-0Qc" firstAttribute="height" secondItem="qnn-wU-711" secondAttribute="height" multiplier="1:4" id="SCu-qe-fmb"/>
                             <constraint firstItem="8nj-3g-Ike" firstAttribute="bottom" secondItem="61r-VF-RTf" secondAttribute="bottom" constant="8" id="VFX-m2-Waa"/>
                             <constraint firstItem="qnn-wU-711" firstAttribute="top" secondItem="8nj-3g-Ike" secondAttribute="top" id="Vyu-XO-zCb"/>
+                            <constraint firstItem="8nj-3g-Ike" firstAttribute="trailing" secondItem="dQv-bl-eNU" secondAttribute="trailing" constant="16" id="XAQ-e1-hEq"/>
                             <constraint firstItem="kMM-es-0Qc" firstAttribute="bottom" secondItem="qnn-wU-711" secondAttribute="bottom" id="iAn-sf-WoB"/>
                             <constraint firstItem="61r-VF-RTf" firstAttribute="leading" secondItem="8nj-3g-Ike" secondAttribute="leading" constant="16" id="nm5-6W-zVd"/>
                             <constraint firstItem="kMM-es-0Qc" firstAttribute="width" secondItem="qnn-wU-711" secondAttribute="width" multiplier="1:4" id="pjV-bS-QXa"/>
                             <constraint firstAttribute="trailing" secondItem="hkR-He-zos" secondAttribute="trailing" constant="16" id="sRQ-ib-c3Q"/>
+                            <constraint firstItem="dQv-bl-eNU" firstAttribute="leading" secondItem="8nj-3g-Ike" secondAttribute="leading" constant="16" id="tue-R1-JQR"/>
                             <constraint firstItem="8nj-3g-Ike" firstAttribute="trailing" secondItem="61r-VF-RTf" secondAttribute="trailing" constant="16" id="y0s-Ux-Kub"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8nj-3g-Ike"/>
@@ -262,10 +289,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="mKC-j0-zEt" id="IVh-b0-qJT"/>
                         <outlet property="descriptionLabel" destination="hcI-Gs-vI5" id="sDQ-UO-2A8"/>
                         <outlet property="descriptionTextField" destination="qXW-Gk-h2W" id="cxm-zE-M43"/>
                         <outlet property="editButton" destination="61r-VF-RTf" id="uxN-Eb-hZl"/>
+                        <outlet property="gcdButton" destination="8sY-47-yzR" id="HDP-ON-OfR"/>
                         <outlet property="nameTextField" destination="pk9-Sw-Hjx" id="1uG-Y4-eO4"/>
+                        <outlet property="operationButton" destination="dfB-WE-69b" id="Xae-K9-Dyd"/>
                         <outlet property="photoButton" destination="kMM-es-0Qc" id="Oxa-Aw-AfS"/>
                         <outlet property="profileImage" destination="qnn-wU-711" id="X5o-no-B4Y"/>
                         <outlet property="userNameLabel" destination="0gi-Ey-g1J" id="KE8-CO-JFo"/>
