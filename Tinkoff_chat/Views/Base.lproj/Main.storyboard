@@ -321,7 +321,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-ST-cbF">
-                                <rect key="frame" x="0.0" y="111" width="320" height="457"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="405"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageIncomeCell" id="WBe-Yk-7mA" customClass="MessageCell" customModule="Tinkoff_chat" customModuleProvider="target">
@@ -412,13 +412,37 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fky-Mt-9Gb">
+                                <rect key="frame" x="5" y="526" width="310" height="32"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Сообщение" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Skn-GC-uS9">
+                                        <rect key="frame" x="0.0" y="0.0" width="208" height="32"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAy-bS-qQ7">
+                                        <rect key="frame" x="213" y="0.0" width="97" height="32"/>
+                                        <color key="backgroundColor" red="0.71037127050000004" green="0.90646107580000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Отправить">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="b7x-ST-cbF" firstAttribute="top" secondItem="nJo-xw-vQQ" secondAttribute="top" id="2X2-wW-IIN"/>
                             <constraint firstItem="nJo-xw-vQQ" firstAttribute="trailing" secondItem="b7x-ST-cbF" secondAttribute="trailing" id="5NQ-YM-YLm"/>
+                            <constraint firstItem="nJo-xw-vQQ" firstAttribute="bottom" secondItem="fky-Mt-9Gb" secondAttribute="bottom" constant="10" id="DvG-Vp-4Nz"/>
                             <constraint firstItem="b7x-ST-cbF" firstAttribute="leading" secondItem="nJo-xw-vQQ" secondAttribute="leading" id="L80-Xo-WfQ"/>
-                            <constraint firstItem="nJo-xw-vQQ" firstAttribute="bottom" secondItem="b7x-ST-cbF" secondAttribute="bottom" id="nBI-4M-dgC"/>
+                            <constraint firstItem="fky-Mt-9Gb" firstAttribute="top" secondItem="b7x-ST-cbF" secondAttribute="bottom" constant="10" id="NGq-sf-9hh"/>
+                            <constraint firstItem="Skn-GC-uS9" firstAttribute="width" secondItem="z8F-tE-bh4" secondAttribute="width" multiplier="0.65" id="iWS-pd-8US"/>
+                            <constraint firstItem="fky-Mt-9Gb" firstAttribute="leading" secondItem="nJo-xw-vQQ" secondAttribute="leading" constant="5" id="vFZ-Tu-hF5"/>
+                            <constraint firstItem="nJo-xw-vQQ" firstAttribute="trailing" secondItem="fky-Mt-9Gb" secondAttribute="trailing" constant="5" id="ytn-dr-Fm6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nJo-xw-vQQ"/>
                     </view>
@@ -428,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tej-HS-mzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-645" y="801"/>
+            <point key="canvasLocation" x="-645" y="800.70422535211264"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bmo-lo-ib1">
