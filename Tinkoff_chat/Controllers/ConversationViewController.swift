@@ -29,6 +29,8 @@ class ConversationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        CommunicationManager.shared.delegate = self
+        
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = conversation.name ?? "No name"
     }

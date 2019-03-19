@@ -17,6 +17,10 @@
 		1450B512223E6BD000CA8702 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B511223E6BCF00CA8702 /* Communicator.swift */; };
 		1450B514223E6C9A00CA8702 /* CommunicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B513223E6C9A00CA8702 /* CommunicatorDelegate.swift */; };
 		1450B516223E88F000CA8702 /* MultipeerCommunicator+MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B515223E88F000CA8702 /* MultipeerCommunicator+MC.swift */; };
+		1450B5362240E99700CA8702 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B5352240E99700CA8702 /* CommunicationManager.swift */; };
+		1450B5382240EE0100CA8702 /* CommunicationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B5372240EE0100CA8702 /* CommunicationManagerDelegate.swift */; };
+		1450B53A2240EFBE00CA8702 /* ConversationListVC+CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B5392240EFBE00CA8702 /* ConversationListVC+CommunicationManager.swift */; };
+		1450B53C2240F01200CA8702 /* ConversationViewController+CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450B53B2240F01200CA8702 /* ConversationViewController+CommunicationManager.swift */; };
 		14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300A22118609008DEADC /* ProfileViewController.swift */; };
 		14AD300E22118609008DEADC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AD300C22118609008DEADC /* Main.storyboard */; };
 		14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300F22118609008DEADC /* Tinkoff_chat.xcdatamodeld */; };
@@ -76,6 +80,10 @@
 		1450B511223E6BCF00CA8702 /* Communicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
 		1450B513223E6C9A00CA8702 /* CommunicatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatorDelegate.swift; sourceTree = "<group>"; };
 		1450B515223E88F000CA8702 /* MultipeerCommunicator+MC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipeerCommunicator+MC.swift"; sourceTree = "<group>"; };
+		1450B5352240E99700CA8702 /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
+		1450B5372240EE0100CA8702 /* CommunicationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManagerDelegate.swift; sourceTree = "<group>"; };
+		1450B5392240EFBE00CA8702 /* ConversationListVC+CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationListVC+CommunicationManager.swift"; sourceTree = "<group>"; };
+		1450B53B2240F01200CA8702 /* ConversationViewController+CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+CommunicationManager.swift"; sourceTree = "<group>"; };
 		14AD300522118609008DEADC /* Tinkoff_chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinkoff_chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AD300822118609008DEADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14AD300A22118609008DEADC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +186,8 @@
 				1450B50F223E6B6900CA8702 /* MultipeerCommunicator.swift */,
 				1450B511223E6BCF00CA8702 /* Communicator.swift */,
 				1450B513223E6C9A00CA8702 /* CommunicatorDelegate.swift */,
+				1450B5352240E99700CA8702 /* CommunicationManager.swift */,
+				1450B5372240EE0100CA8702 /* CommunicationManagerDelegate.swift */,
 			);
 			path = Communicator;
 			sourceTree = "<group>";
@@ -258,6 +268,8 @@
 				14EC89182224665800F6A1B4 /* ConversationViewController+UITableViewDataSource.swift */,
 				1450B4D522300EAC00CA8702 /* ConversationsListVC+ThemesViewControllerDelegate.swift */,
 				1450B515223E88F000CA8702 /* MultipeerCommunicator+MC.swift */,
+				1450B5392240EFBE00CA8702 /* ConversationListVC+CommunicationManager.swift */,
+				1450B53B2240F01200CA8702 /* ConversationViewController+CommunicationManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -458,7 +470,10 @@
 				14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */,
 				14EC890C2224176600F6A1B4 /* Date+readableFormat.swift in Sources */,
 				14EC89062223F81C00F6A1B4 /* ConversationsListVC+UITableViewDelegate.swift in Sources */,
+				1450B5382240EE0100CA8702 /* CommunicationManagerDelegate.swift in Sources */,
+				1450B53C2240F01200CA8702 /* ConversationViewController+CommunicationManager.swift in Sources */,
 				14DA2695221B26E80078B4CD /* UIView+anchor.swift in Sources */,
+				1450B53A2240EFBE00CA8702 /* ConversationListVC+CommunicationManager.swift in Sources */,
 				14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */,
 				1450B514223E6C9A00CA8702 /* CommunicatorDelegate.swift in Sources */,
 				1450B510223E6B6900CA8702 /* MultipeerCommunicator.swift in Sources */,
@@ -481,6 +496,7 @@
 				14EC890822240B9B00F6A1B4 /* DataService.swift in Sources */,
 				1450B512223E6BD000CA8702 /* Communicator.swift in Sources */,
 				14EC891322242A3F00F6A1B4 /* MessageCell.swift in Sources */,
+				1450B5362240E99700CA8702 /* CommunicationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

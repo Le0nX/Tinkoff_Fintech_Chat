@@ -8,15 +8,22 @@
 
 import Foundation
 
-struct Conversation {
+class Conversation {
     
+    var userId: String
     var name: String?
     var message: String?
     var online: Bool
     var date: Date?
     var hasUnreadMessages: Bool
-    var history: [Message]
+    var history: [Message] = []
     
+    init(userId: String, name: String?) {
+        self.userId = userId
+        self.name = name
+        online = true
+        hasUnreadMessages = false
+    }
     
     enum Message {
         case income(String)
