@@ -36,9 +36,10 @@ class CommunicationManager: CommunicatorDelegate {
     }
     
     func didLostUser(userID: String) {
-        if !DataService.shared.setOffline(id: userID) {
-            // adding new user
+        if DataService.shared.setOffline(id: userID) {
+            
             DataService.shared.remove(id: userID)
+            
         }
         
         guard let delegate = delegate else { return }

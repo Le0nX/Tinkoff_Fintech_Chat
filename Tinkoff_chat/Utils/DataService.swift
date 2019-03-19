@@ -55,11 +55,15 @@ public class DataService {
     
     func add(conversation: Conversation) {
         conversations[conversation.userId] = conversation
+        onlineConversations = conversations.values.filter{$0.online}
+//        offlineConversations = conversations.values.filter{!$0.online}
         updateOnlineConversations()
     }
     
     func remove(id: String) {
         conversations.removeValue(forKey: id)
+        onlineConversations = conversations.values.filter{$0.online}
+//        offlineConversations = conversations.values.filter{!$0.online}
         updateOnlineConversations()
     }
     
@@ -84,12 +88,10 @@ public class DataService {
     }
     
     private func updateOnlineConversations() {
-        onlineConversations = conversations.values.filter{$0.online}
         onlineConversations.sort(by: sortConversation(first:second:))
     }
     
     private func updateOfflineConversations() {
-        offlineConversations = conversations.values.filter{!$0.online}
         offlineConversations.sort(by: sortConversation(first:second:))
     }
     
