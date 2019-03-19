@@ -263,11 +263,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBAction func saveProfileGCD(_ sender: UIButton) {
         dataManager = gcdDataManager
         saveProfileSettings()
+        // MARK: update userName
+//        CommunicationManager.shared.communicator.updateUserName()
     }
     
     @IBAction func saveProfileOperation(_ sender: UIButton) {
         dataManager = operationDataManager
         saveProfileSettings()
+        // MARK: update userName
+//        CommunicationManager.shared.communicator.updateUserName()
     }
     
     private func loadProfileSettings() {

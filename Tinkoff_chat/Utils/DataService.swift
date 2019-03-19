@@ -13,10 +13,11 @@ public class DataService {
     static let shared = DataService()
     private init(){}
     
-    private var wasUpdated = true {
+    var wasUpdated = true {
         didSet {
             if wasUpdated {
                 onlineConversations = conversations.values.filter{$0.online}
+                onlineConversations.sort(by: sortConversation(first:second:))
                 wasUpdated = false
             } else {
                 offlineConversations = conversations.values.filter{!$0.online && ($0.message != nil)}
@@ -63,11 +64,29 @@ public class DataService {
         return Array(conversations.values)
     }
     
+    func getConversations(userId: String) -> Conversation? {
+        return conversations[userId]
+    }
+    
     func getOnlineConversations() -> [Conversation] {
         return onlineConversations
     }
     
     func getOfflineConversations() -> [Conversation] {
         return offlineConversations
+    }
+    
+    private func sortConversation(first: Conversation, second: Conversation) -> Bool {
+        if let firstDate = first.date, let firstName = first.name {
+            if let secondDate = second.date, let secondName = first.name {
+                if firstDate.timeIntervalSinceNow != secondDate.timeIntervalSinceNow {
+                    return firstDate.timeIntervalSinceNow > secondDate.timeIntervalSinceNow
+                }
+                return firstName > secondName
+            }
+            return true
+        } else {
+            return false
+        }
     }
 }

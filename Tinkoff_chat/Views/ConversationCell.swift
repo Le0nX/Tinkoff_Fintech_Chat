@@ -64,7 +64,7 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
             if hasUnreadMessages {
                 messageLbl.font = UIFont(name: "Futura-Bold", size:18)
             } else {
-                messageLbl.font = UIFont(name: "Futura", size:18)
+                messageLbl.font = UIFont(name: "Futura-Light", size:18)
             }
             messageLbl.text = message
         }

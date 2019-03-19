@@ -24,14 +24,18 @@ class ConversationsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        CommunicationManager.shared.delegate = self
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        CommunicationManager.shared.delegate = self
+        updateUsers()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ConversationSegue", let indexPath = sender as? IndexPath {
             let conversationViewController = segue.destination as! ConversationViewController

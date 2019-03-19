@@ -12,4 +12,8 @@ extension ConversationsListViewController: CommunicationManagerDelegate {
     func updateUsers() {
         tableView.reloadData()
     }
+    
+    func handleError(error: Error) {
+        assert(false, error.localizedDescription)
+    }
 }

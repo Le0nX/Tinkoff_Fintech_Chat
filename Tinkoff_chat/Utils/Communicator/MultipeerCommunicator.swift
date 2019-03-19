@@ -14,14 +14,16 @@ class MultipeerCommunicator: NSObject, Communicator {
     var browser: MCNearbyServiceBrowser!
     var advertiser: MCNearbyServiceAdvertiser!
     
+    let serviceType = "serviceType"
+    
     var sessions: [String: MCSession] = [:]
     
-    var online: Bool = true {
+    var online: Bool = false {
         didSet {
             if online {
                 // начинаем поиск и вещание
-                browser.startBrowsingForPeers()
                 advertiser.startAdvertisingPeer()
+                browser.startBrowsingForPeers()
             } else {
                 // заканчиваем поиск и вещание
                 browser.stopBrowsingForPeers()
@@ -35,25 +37,45 @@ class MultipeerCommunicator: NSObject, Communicator {
     
     override init() {
         super.init()
+       
         
-        // достаем имя из UserDefaults
         let userName = UserDefaults.standard.string(forKey: "user_name") ?? "noname: (\(UIDevice.current.model))"
-        
         let discoveryInfo = ["userName" : userName]
         let serviceType = "tinkoff-chat"
         
         myPeerID = MCPeerID(displayName: UIDevice.current.name)
-
+        
         advertiser = MCNearbyServiceAdvertiser(peer: myPeerID, discoveryInfo: discoveryInfo, serviceType: serviceType)
         browser = MCNearbyServiceBrowser(peer: myPeerID, serviceType: serviceType)
         
         browser.delegate = self
         advertiser.delegate = self
-        
+
         advertiser.startAdvertisingPeer()
         browser.startBrowsingForPeers()
     }
     
+    //MARK: попытка сделать обновление имени у других пиров, если сменили имя профиля
+//    func getCachedUserName() -> String {
+//        // достаем имя из UserDefaults
+//        return UserDefaults.standard.string(forKey: "user_name") ?? "NoName"
+//    }
+//
+//    func restartAdvertiser() {
+//        let userName = getCachedUserName()
+//        let discoveryInfo = ["userName" : userName]
+//
+//        self.sessions.removeAll()
+//        advertiser.stopAdvertisingPeer()
+//        advertiser = MCNearbyServiceAdvertiser(peer: myPeerID, discoveryInfo: discoveryInfo, serviceType: serviceType)
+//        advertiser.delegate = self
+//        advertiser.startAdvertisingPeer()
+//
+//    }
+//
+//    func updateUserName() {
+//        restartAdvertiser()
+//    }
     
     func sendMessage(string: String, to userID: String, completionHandler: ((Bool, Error?) -> ())?) {
         guard let session = sessions[userID] else { return }

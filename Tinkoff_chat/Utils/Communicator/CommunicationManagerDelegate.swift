@@ -10,4 +10,5 @@ import Foundation
 
 protocol CommunicationManagerDelegate: class {
     func updateUsers()
+    func handleError(error: Error)
 }
