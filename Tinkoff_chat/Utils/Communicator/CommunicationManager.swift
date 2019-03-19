@@ -62,28 +62,16 @@ class CommunicationManager: CommunicatorDelegate {
     }
     
     func didReceiveMessage(text: String, fromUser: String, toUser: String) {
-        if let conversation = DataService.shared.getConversation(for: fromUser) {
+        if DataService.shared.hasConversation(for: fromUser) {
             
-            let message = Conversation.Message.income(text)
-            conversation.history.append(message)
-            
-            conversation.date = Date()
-            conversation.message = text
-            conversation.hasUnreadMessages = true
-            
-            //TODO: исправить
-            DataService.shared.wasUpdated = true
-            
-        } else if let conversation = DataService.shared.getConversation(for: toUser) {
+            let message = Conversation.Message.income(text)            
+            DataService.shared.updateConversation(user: fromUser, message: text, date: Date(), history: message, hasUnread: true)
+        
+        } else if DataService.shared.hasConversation(for: toUser) {
             
             let message = Conversation.Message.outcome(text)
-            conversation.history.append(message)
-            
-            conversation.date = Date()
-            conversation.message = text
-            
-            //TODO: исправить
-            DataService.shared.wasUpdated = true
+            DataService.shared.updateConversation(user: toUser, message: text, date: Date(), history: message, hasUnread: true)
+       
         }
         
         guard let delegate = delegate else { return }

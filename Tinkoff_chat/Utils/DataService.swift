@@ -13,26 +13,29 @@ public class DataService {
     static let shared = DataService()
     private init(){}
     
-    var wasUpdated = true {
-        didSet {
-            if wasUpdated {
-                onlineConversations = conversations.values.filter{$0.online}
-                onlineConversations.sort(by: sortConversation(first:second:))
-                wasUpdated = false
-            } else {
-                offlineConversations = conversations.values.filter{!$0.online && ($0.message != nil)}
-            }
-        }
-    }
     private var conversations: [String : Conversation] = [:]
     
     private var onlineConversations = [Conversation]()
     private var offlineConversations = [Conversation]()
     
+    
+    func updateConversation(user: String, message: String, date: Date, history: Conversation.Message, hasUnread: Bool? ) {
+        if let conversation = conversations[user] {
+            if let unread = hasUnread {
+                conversation.hasUnreadMessages = unread
+            }
+            
+            conversation.history.append(history)
+            conversation.date = date
+            conversation.message = message
+            updateOnlineConversations()
+        }
+    }
+    
     func setOnline(id: String) -> Bool {
         if let conversation = conversations[id] {
             conversation.online = true
-            wasUpdated = true
+            updateOnlineConversations()
             return true
         } else {
             return false
@@ -43,7 +46,7 @@ public class DataService {
     func setOffline(id: String) -> Bool {
         if let conversation = conversations[id] {
             conversation.online = false
-            wasUpdated = true
+            updateOfflineConversations()
             return true
         } else {
             return false
@@ -52,20 +55,24 @@ public class DataService {
     
     func add(conversation: Conversation) {
         conversations[conversation.userId] = conversation
-        wasUpdated = true
+        updateOnlineConversations()
     }
     
     func remove(id: String) {
         conversations.removeValue(forKey: id)
-        wasUpdated = true
+        updateOnlineConversations()
     }
     
     func getAllConversations() -> [Conversation] {
         return Array(conversations.values)
     }
     
-    func getConversation(for userId: String) -> Conversation? {
-        return conversations[userId]
+    func hasConversation(for userId: String) -> Bool {
+        if conversations[userId] != nil {
+            return true
+        } else {
+            return false
+        }
     }
     
     func getOnlineConversations() -> [Conversation] {
@@ -74,6 +81,16 @@ public class DataService {
     
     func getOfflineConversations() -> [Conversation] {
         return offlineConversations
+    }
+    
+    private func updateOnlineConversations() {
+        onlineConversations = conversations.values.filter{$0.online}
+        onlineConversations.sort(by: sortConversation(first:second:))
+    }
+    
+    private func updateOfflineConversations() {
+        offlineConversations = conversations.values.filter{!$0.online}
+        offlineConversations.sort(by: sortConversation(first:second:))
     }
     
     private func sortConversation(first: Conversation, second: Conversation) -> Bool {
