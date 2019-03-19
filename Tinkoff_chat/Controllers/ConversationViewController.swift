@@ -13,6 +13,8 @@ class ConversationViewController: UIViewController {
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextField: UITextField!
     
+    @IBOutlet var bottomTextFieldConstraint: NSLayoutConstraint!
+    
     @IBOutlet var tableView: UITableView! {
         didSet {
         /// трюк, чтобы UITableView не отрисовывал пустые ячейки, после того, как отрисовал все нужные ячейки
@@ -28,6 +30,11 @@ class ConversationViewController: UIViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(gesture:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +54,33 @@ class ConversationViewController: UIViewController {
         sendButton.layer.cornerRadius = sendButton.frame.width * 0.1
         sendButton.clipsToBounds = true
         sendButton.isEnabled = false
+    }
+    
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+            let isKeyboardHiding = notification.name == UIResponder.keyboardWillShowNotification
+            
+            bottomTextFieldConstraint.constant = isKeyboardHiding ? keyboardHeight + 5 - view.safeAreaInsets.bottom : 0
+            
+            UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+                
+                self.view.layoutIfNeeded()
+                
+                }, completion: { [unowned self](completed) in
+                    
+                    if !self.conversation.history.isEmpty {
+                        let indexPath = IndexPath(row: self.conversation.history.count - 1, section: 0)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    }
+                    
+                })
+        }
+    }
+    
+    @objc func dismissKeyboard(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @IBAction func messageWasChanged(_ sender: UITextField) {

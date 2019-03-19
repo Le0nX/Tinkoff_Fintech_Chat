@@ -50,7 +50,7 @@ public class DataService {
         }
     }
     
-    func addFor(conversation: Conversation) {
+    func add(conversation: Conversation) {
         conversations[conversation.userId] = conversation
         wasUpdated = true
     }
@@ -60,11 +60,11 @@ public class DataService {
         wasUpdated = true
     }
     
-    func getConversations() -> [Conversation] {
+    func getAllConversations() -> [Conversation] {
         return Array(conversations.values)
     }
     
-    func getConversations(userId: String) -> Conversation? {
+    func getConversation(for userId: String) -> Conversation? {
         return conversations[userId]
     }
     

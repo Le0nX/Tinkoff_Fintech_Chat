@@ -453,6 +453,7 @@
                         <viewLayoutGuide key="safeArea" id="nJo-xw-vQQ"/>
                     </view>
                     <connections>
+                        <outlet property="bottomTextFieldConstraint" destination="DvG-Vp-4Nz" id="JU6-uO-fd9"/>
                         <outlet property="messageTextField" destination="Skn-GC-uS9" id="Lkq-oc-upO"/>
                         <outlet property="sendButton" destination="MAy-bS-qQ7" id="kLy-ni-797"/>
                         <outlet property="tableView" destination="b7x-ST-cbF" id="qjP-3n-Fva"/>

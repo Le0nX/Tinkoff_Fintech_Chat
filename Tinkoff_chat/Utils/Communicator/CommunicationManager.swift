@@ -26,7 +26,7 @@ class CommunicationManager: CommunicatorDelegate {
         if !DataService.shared.setOnline(id: userID) {
             // adding new user
             let conversation = Conversation(userId: userID, name: userName)
-            DataService.shared.addFor(conversation: conversation)
+            DataService.shared.add(conversation: conversation)
             
         }
         guard let delegate = delegate else { return }
@@ -48,15 +48,21 @@ class CommunicationManager: CommunicatorDelegate {
     }
     
     func failedToStartBrowsingForUsers(error: Error) {
-        
+        guard let delegate = delegate else { return }
+        DispatchQueue.main.async {
+            delegate.handleError(error: error)
+        }
     }
     
     func failedToStartAdvertising(error: Error) {
-        
+        guard let delegate = delegate else { return }
+        DispatchQueue.main.async {
+            delegate.handleError(error: error)
+        }
     }
     
     func didReceiveMessage(text: String, fromUser: String, toUser: String) {
-        if let conversation = DataService.shared.getConversations(userId: fromUser) {
+        if let conversation = DataService.shared.getConversation(for: fromUser) {
             
             let message = Conversation.Message.income(text)
             conversation.history.append(message)
@@ -68,7 +74,7 @@ class CommunicationManager: CommunicatorDelegate {
             //TODO: исправить
             DataService.shared.wasUpdated = true
             
-        } else if let conversation = DataService.shared.getConversations(userId: toUser) {
+        } else if let conversation = DataService.shared.getConversation(for: toUser) {
             
             let message = Conversation.Message.outcome(text)
             conversation.history.append(message)
