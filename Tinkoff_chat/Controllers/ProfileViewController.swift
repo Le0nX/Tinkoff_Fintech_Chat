@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     //MARK: - Outlets
@@ -23,6 +24,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
+    
+    var dataStack = CoreDataStack()
     
     //MARK: - Models
     var profile: ProfileData!
@@ -261,6 +264,19 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     
     @IBAction func saveProfileGCD(_ sender: UIButton) {
+        
+        
+        let appUser = AppUser.findOrInsertAppUser(in: self.dataStack.mainContext)
+        appUser?.setValue(nameTextField.text, forKey: "name")
+        //appUser?.setValue(Data(), forKey: "timestamp")
+        dataStack.performSave(with: self.dataStack.mainContext)
+        
+        
+        let model = dataStack.managedObjectModel
+        let name = AppUser.fetchRequestAppUser(model: model)
+        let result = try! dataStack.mainContext.fetch(name!)
+        print(result.first!.name)
+        
         dataManager = gcdDataManager
         saveProfileSettings()
         // MARK: update userName
@@ -291,6 +307,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     private func saveProfileSettings() {
         // на время сохранения делаем кнопки неактивными
+        
         savingInProcess = true
         gcdButton.isEnabled = false
         operationButton.isEnabled = false
