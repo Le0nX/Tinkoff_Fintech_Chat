@@ -200,7 +200,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 guard let `self` = self else { return }
                 self.profileImage.image = UIImage(named: "placeholder-user")
                 self.photoIsEstablished = false
-                self.prepareSaveButtons()
+                self.saveButton.isEnabled = true
             }
             alertController.addAction(deleteAlertAction)
         }
