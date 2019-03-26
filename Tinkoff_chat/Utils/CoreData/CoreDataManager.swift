@@ -13,7 +13,7 @@ class CoreDataManager {
     private let coreDataStack = CoreDataStack.shared
     
     func loadProfile(completion: @escaping (AppUser?) -> Void) {
-        AppUser.getProfile(in: coreDataStack.mainContext) { (userProfile) in
+        AppUser.getProfile(in: coreDataStack.saveContext) { (userProfile) in
             DispatchQueue.main.async {
                 completion(userProfile)
             }
