@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GeD-7p-1Hw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GeD-7p-1Hw">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -246,16 +246,9 @@
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sY-47-yzR">
                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
-                                        <state key="normal" title="GCD"/>
+                                        <state key="normal" title="Save profile"/>
                                         <connections>
-                                            <action selector="saveProfileGCD:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X7w-zM-rAc"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfB-WE-69b">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
-                                        <state key="normal" title="Operation"/>
-                                        <connections>
-                                            <action selector="saveProfileOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i4p-Jq-pkV"/>
+                                            <action selector="saveProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X7w-zM-rAc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -299,11 +292,10 @@
                         <outlet property="descriptionLabel" destination="hcI-Gs-vI5" id="sDQ-UO-2A8"/>
                         <outlet property="descriptionTextField" destination="qXW-Gk-h2W" id="cxm-zE-M43"/>
                         <outlet property="editButton" destination="61r-VF-RTf" id="uxN-Eb-hZl"/>
-                        <outlet property="gcdButton" destination="8sY-47-yzR" id="HDP-ON-OfR"/>
                         <outlet property="nameTextField" destination="pk9-Sw-Hjx" id="1uG-Y4-eO4"/>
-                        <outlet property="operationButton" destination="dfB-WE-69b" id="Xae-K9-Dyd"/>
                         <outlet property="photoButton" destination="kMM-es-0Qc" id="Oxa-Aw-AfS"/>
                         <outlet property="profileImage" destination="qnn-wU-711" id="X5o-no-B4Y"/>
+                        <outlet property="saveButton" destination="8sY-47-yzR" id="HDP-ON-OfR"/>
                         <outlet property="userNameLabel" destination="0gi-Ey-g1J" id="KE8-CO-JFo"/>
                     </connections>
                 </viewController>

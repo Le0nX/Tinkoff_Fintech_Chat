@@ -55,28 +55,6 @@ class MultipeerCommunicator: NSObject, Communicator {
         browser.startBrowsingForPeers()
     }
     
-    //MARK: попытка сделать обновление имени у других пиров, если сменили имя профиля
-//    func getCachedUserName() -> String {
-//        // достаем имя из UserDefaults
-//        return UserDefaults.standard.string(forKey: "user_name") ?? "NoName"
-//    }
-//
-//    func restartAdvertiser() {
-//        let userName = getCachedUserName()
-//        let discoveryInfo = ["userName" : userName]
-//
-//        self.sessions.removeAll()
-//        advertiser.stopAdvertisingPeer()
-//        advertiser = MCNearbyServiceAdvertiser(peer: myPeerID, discoveryInfo: discoveryInfo, serviceType: serviceType)
-//        advertiser.delegate = self
-//        advertiser.startAdvertisingPeer()
-//
-//    }
-//
-//    func updateUserName() {
-//        restartAdvertiser()
-//    }
-    
     func sendMessage(string: String, to userID: String, completionHandler: ((Bool, Error?) -> ())?) {
         guard let session = sessions[userID] else { return }
         

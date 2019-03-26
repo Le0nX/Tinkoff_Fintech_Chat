@@ -18,16 +18,18 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    @IBOutlet var gcdButton: UIButton!
-    @IBOutlet var operationButton: UIButton!
+    @IBOutlet var saveButton: UIButton!
+//    @IBOutlet var operationButton: UIButton!
     
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
     
     //MARK: - Models
-    var profile: ProfileData!
+    //var profile: ProfileData!
+    var profile: AppUser!
     
     //MARK: - Data Managers
+    let storageManager = CoreDataManager()
     var dataManager: ProfileDataManager!
     let gcdDataManager = GCDDataManager()
     let operationDataManager = OperationDataManager()
@@ -45,11 +47,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             photoButton.isHidden = !photoButton.isHidden
             nameTextField.isHidden = !nameTextField.isHidden
             descriptionTextField.isHidden = !descriptionTextField.isHidden
-            gcdButton.isHidden = !gcdButton.isHidden
-            operationButton.isHidden = !operationButton.isHidden
+            saveButton.isHidden = !saveButton.isHidden
+//            operationButton.isHidden = !operationButton.isHidden
             if profileInEditing {
-                gcdButton.isEnabled = false
-                operationButton.isEnabled = false
+                saveButton.isEnabled = false
+//                operationButton.isEnabled = false
+                nameTextField.text = userNameLabel.text
+                descriptionTextField.text = descriptionLabel.text
                 editButton.setTitle("Отменить редактирование", for: .normal)
             } else {
                 editButton.setTitle("Редактировать", for: .normal)
@@ -163,10 +167,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         weak var setImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         profileImage.contentMode = .scaleToFill
         profileImage.image = setImage
+        photoIsEstablished = true
         dismiss(animated: true, completion: nil)
 //        prepareSaveButtons()
-        operationButton.isEnabled = true
-        gcdButton.isEnabled = true
+//        operationButton.isEnabled = true
+        saveButton.isEnabled = true
     }
     
     func getCamera() {
@@ -238,8 +243,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         editButton.clipsToBounds = true
         
         styleProfileButton(editButton, with: UIColor.black.cgColor, cornerRaius: 10)
-        styleProfileButton(gcdButton, with: UIColor.black.cgColor, cornerRaius: 10)
-        styleProfileButton(operationButton, with: UIColor.black.cgColor, cornerRaius: 10)
+        styleProfileButton(saveButton, with: UIColor.black.cgColor, cornerRaius: 10)
+//        styleProfileButton(operationButton, with: UIColor.black.cgColor, cornerRaius: 10)
     }
     
     func styleProfileButton(_ button: UIButton, with borderColor: CGColor, cornerRaius: CGFloat) {
@@ -249,9 +254,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     private func updateView() {
-        userNameLabel.text = profile.name
-        descriptionLabel.text = profile.description
-        profileImage.image = profile.userImage
+        userNameLabel.text = profile.profileName
+        descriptionLabel.text = profile.profileDescription
+        
+        let userPicture = UIImage(data: profile.profilePicture!)
+        profileImage.image = userPicture
     }
     
     // MARK: - Profile saving/loading routines
@@ -260,31 +267,34 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     
-    @IBAction func saveProfileGCD(_ sender: UIButton) {
-        dataManager = gcdDataManager
+    @IBAction func saveProfile(_ sender: UIButton) {
         saveProfileSettings()
-        // MARK: update userName
-//        CommunicationManager.shared.communicator.updateUserName()
-    }
-    
-    @IBAction func saveProfileOperation(_ sender: UIButton) {
-        dataManager = operationDataManager
-        saveProfileSettings()
-        // MARK: update userName
-//        CommunicationManager.shared.communicator.updateUserName()
     }
     
     private func loadProfileSettings() {
         editButton.isHidden = true
-        dataManager = operationDataManager
+        //dataManager = operationDataManager
         activityIndicator.startAnimating()
-        gcdDataManager.getProfile { (profile) in
+//        gcdDataManager.getProfile { (profile) in
+//            self.profile = profile
+//            self.activityIndicator.stopAnimating()
+//            self.activityIndicator.isHidden = true
+//            self.editButton.isHidden = false
+//            // compare with default photo
+//            self.photoIsEstablished = UIImage(named: "placeholder-user")!.pngData() != profile.userImage.pngData()
+//            self.updateView()
+//        }
+        storageManager.loadProfile { (userPorfile) in
+            guard let profile = userPorfile else {
+                return
+            }
             self.profile = profile
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.editButton.isHidden = false
-            // compare with default photo
-            self.photoIsEstablished = UIImage(named: "placeholder-user")!.pngData() != profile.userImage.pngData()
+            
+            let picture = UIImage(data: profile.profilePicture!)
+            self.photoIsEstablished = UIImage(named: "placeholder-user")!.pngData() != picture?.pngData()
             self.updateView()
         }
     }
@@ -292,18 +302,25 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     private func saveProfileSettings() {
         // на время сохранения делаем кнопки неактивными
         savingInProcess = true
-        gcdButton.isEnabled = false
-        operationButton.isEnabled = false
+        saveButton.isEnabled = false
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        //get new profileData from view
-        let newProfileData = ProfileData(name: nameTextField.text!, description: descriptionTextField.text!, userImage: profileImage.image!)
         
-        // здесь self не делаем weak, т.к. "Passing a block to dispatch_async on a global or main queue will NEVER produce a retain cycle.
-        dataManager.saveProfile(newProfile: newProfileData, oldProfile: profile) { (exception) in
-            if exception == nil {
-                self.profile = newProfileData
+        self.profile.profileName = self.nameTextField.text ?? "No name"
+        self.profile.profileDescription = self.descriptionTextField.text ?? ""
+        
+        if self.photoIsEstablished {
+            let imageData = self.profileImage.image?.pngData()
+            self.profile.profilePicture = imageData
+        } else {
+            self.profile.profilePicture = UIImage(named: "placeholder-user")!.pngData()
+        }
+        
+        
+        self.storageManager.saveProfile { (error) in
+        if error == nil {
+//                    self.profile = newProfileData
                 let alert = UIAlertController(title: "Данные сохранены", message: nil, preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ок", style: .default) { action in
                     if self.profileInEditing {
@@ -317,7 +334,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             } else {
                 let alert = UIAlertController(title: "Ошибка", message: "Не удалось сохранить данные", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ок", style: .default, handler: nil)
-                let tryAgain = UIAlertAction(title: "Повтор", style: .default) { action in
+                let tryAgain = UIAlertAction(title: "Повторить", style: .default) { action in
                     self.saveProfileSettings()
                 }
                 alert.addAction(ok)
@@ -326,10 +343,40 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             }
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
-            self.gcdButton.isEnabled = true
-            self.operationButton.isEnabled = true
+            self.saveButton.isEnabled = true
+//            self.operationButton.isEnabled = true
             self.savingInProcess = false
         }
+        // здесь self не делаем weak, т.к. "Passing a block to dispatch_async on a global or main queue will NEVER produce a retain cycle.
+//        dataManager.saveProfile(newProfile: newProfileData, oldProfile: profile) { (exception) in
+//            if exception == nil {
+//                self.profile = newProfileData
+//                let alert = UIAlertController(title: "Данные сохранены", message: nil, preferredStyle: .alert)
+//                let ok = UIAlertAction(title: "Ок", style: .default) { action in
+//                    if self.profileInEditing {
+//                        self.profileInEditing = false
+//                    } else {
+//                        self.updateView()
+//                    }
+//                }
+//                alert.addAction(ok)
+//                self.present(alert, animated: true, completion: nil)
+//            } else {
+//                let alert = UIAlertController(title: "Ошибка", message: "Не удалось сохранить данные", preferredStyle: .alert)
+//                let ok = UIAlertAction(title: "Ок", style: .default, handler: nil)
+//                let tryAgain = UIAlertAction(title: "Повтор", style: .default) { action in
+//                    self.saveProfileSettings()
+//                }
+//                alert.addAction(ok)
+//                alert.addAction(tryAgain)
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//            self.activityIndicator.stopAnimating()
+//            self.activityIndicator.isHidden = true
+//            self.gcdButton.isEnabled = true
+////            self.operationButton.isEnabled = true
+//            self.savingInProcess = false
+//        }
     }
     
     // MARK: - save buttons enable/disable
@@ -344,16 +391,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     private func prepareSaveButtons() {
-        gcdButton.isEnabled = checkGcdButton()
-        operationButton.isEnabled = checkOperationButton()
+        saveButton.isEnabled = checkSaveButton()
+//        operationButton.isEnabled = checkOperationButton()
     }
     
-    private func checkGcdButton() -> Bool {
-        return !savingInProcess && (nameTextField.text != "") && ((nameTextField.text != profile.name) || (descriptionTextField.text != profile.description) || (profileImage.image!.pngData() != profile.userImage.pngData()))
-    }
-    
-    private func checkOperationButton() -> Bool {
-        return !savingInProcess && (nameTextField.text != "") && ((nameTextField.text != profile.name) || (descriptionTextField.text != profile.description) || (profileImage.image!.pngData() != profile.userImage.pngData()))
+    private func checkSaveButton() -> Bool {
+        let image = UIImage(data: self.profile.profilePicture!)
+        return !self.savingInProcess && (self.nameTextField.text != self.userNameLabel.text) && ((self.nameTextField.text != self.profile.profileName) || (self.descriptionTextField.text != self.profile.profileDescription) || (self.profileImage.image!.pngData() != image?.pngData()))
     }
     
     // MARK: - keyboard Routine
