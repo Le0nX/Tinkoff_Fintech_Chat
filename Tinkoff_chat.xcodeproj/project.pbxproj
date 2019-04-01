@@ -26,12 +26,11 @@
 		14AD301122118609008DEADC /* Tinkoff_chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300F22118609008DEADC /* Tinkoff_chat.xcdatamodeld */; };
 		14AD30132211860A008DEADC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14AD30122211860A008DEADC /* Assets.xcassets */; };
 		14AD30162211860A008DEADC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AD30142211860A008DEADC /* LaunchScreen.storyboard */; };
-		14AD30212211860A008DEADC /* Tinkoff_chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD30202211860A008DEADC /* Tinkoff_chatTests.swift */; };
-		14AD302C2211860A008DEADC /* Tinkoff_chatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD302B2211860A008DEADC /* Tinkoff_chatUITests.swift */; };
+		14AD30212211860A008DEADC /* TinkoffChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD30202211860A008DEADC /* TinkoffChatTests.swift */; };
+		14AD302C2211860A008DEADC /* TinkoffChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD302B2211860A008DEADC /* TinkoffChatUITests.swift */; };
 		14AD303B22119128008DEADC /* StateLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303A22119128008DEADC /* StateLogger.swift */; };
 		14AD303E2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */; };
 		14AD30502211B4D4008DEADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AD300822118609008DEADC /* AppDelegate.swift */; };
-		14DA2695221B26E80078B4CD /* UIView+anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA2694221B26E80078B4CD /* UIView+anchor.swift */; };
 		14DF6C9F2249D061005BF99E /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DF6C9E2249D061005BF99E /* AppUser.swift */; };
 		14DF6CA12249D116005BF99E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DF6CA02249D116005BF99E /* CoreDataManager.swift */; };
 		14DF6CA32249D13D005BF99E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DF6CA22249D13D005BF99E /* CoreDataStack.swift */; };
@@ -99,15 +98,14 @@
 		14AD30152211860A008DEADC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14AD30172211860A008DEADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14AD301C2211860A008DEADC /* Tinkoff_chatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tinkoff_chatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		14AD30202211860A008DEADC /* Tinkoff_chatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tinkoff_chatTests.swift; sourceTree = "<group>"; };
+		14AD30202211860A008DEADC /* TinkoffChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffChatTests.swift; sourceTree = "<group>"; };
 		14AD30222211860A008DEADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14AD30272211860A008DEADC /* Tinkoff_chatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tinkoff_chatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		14AD302B2211860A008DEADC /* Tinkoff_chatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tinkoff_chatUITests.swift; sourceTree = "<group>"; };
+		14AD302B2211860A008DEADC /* TinkoffChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffChatUITests.swift; sourceTree = "<group>"; };
 		14AD302D2211860A008DEADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14AD303A22119128008DEADC /* StateLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogger.swift; sourceTree = "<group>"; };
 		14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplicationState+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		14AD304F2211B306008DEADC /* Tinkoff_chat copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tinkoff_chat copy-Info.plist"; path = "/Users/le0nx/wrk/TINKOFF/Tinkoff_chat/Tinkoff_chat copy-Info.plist"; sourceTree = "<absolute>"; };
-		14DA2694221B26E80078B4CD /* UIView+anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+anchor.swift"; sourceTree = "<group>"; };
 		14DF6C9E2249D061005BF99E /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		14DF6CA02249D116005BF99E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		14DF6CA22249D13D005BF99E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -254,7 +252,7 @@
 		14AD301F2211860A008DEADC /* Tinkoff_chatTests */ = {
 			isa = PBXGroup;
 			children = (
-				14AD30202211860A008DEADC /* Tinkoff_chatTests.swift */,
+				14AD30202211860A008DEADC /* TinkoffChatTests.swift */,
 				14AD30222211860A008DEADC /* Info.plist */,
 			);
 			path = Tinkoff_chatTests;
@@ -263,7 +261,7 @@
 		14AD302A2211860A008DEADC /* Tinkoff_chatUITests */ = {
 			isa = PBXGroup;
 			children = (
-				14AD302B2211860A008DEADC /* Tinkoff_chatUITests.swift */,
+				14AD302B2211860A008DEADC /* TinkoffChatUITests.swift */,
 				14AD302D2211860A008DEADC /* Info.plist */,
 			);
 			path = Tinkoff_chatUITests;
@@ -285,7 +283,6 @@
 			isa = PBXGroup;
 			children = (
 				14AD303D2211A079008DEADC /* UIApplicationState+CustomStringConvertible.swift */,
-				14DA2694221B26E80078B4CD /* UIView+anchor.swift */,
 				14EC89032223F7D500F6A1B4 /* ConversationsListVC+UItableViewDataSource.swift */,
 				14EC89052223F81C00F6A1B4 /* ConversationsListVC+UITableViewDelegate.swift */,
 				14EC890B2224176600F6A1B4 /* Date+readableFormat.swift */,
@@ -609,7 +606,6 @@
 				14EC89062223F81C00F6A1B4 /* ConversationsListVC+UITableViewDelegate.swift in Sources */,
 				1450B5382240EE0100CA8702 /* CommunicationManagerDelegate.swift in Sources */,
 				1450B53C2240F01200CA8702 /* ConversationViewController+CommunicationManager.swift in Sources */,
-				14DA2695221B26E80078B4CD /* UIView+anchor.swift in Sources */,
 				1450B53A2240EFBE00CA8702 /* ConversationListVC+CommunicationManager.swift in Sources */,
 				14AD300B22118609008DEADC /* ProfileViewController.swift in Sources */,
 				1450B514223E6C9A00CA8702 /* CommunicatorDelegate.swift in Sources */,
@@ -642,7 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14AD30212211860A008DEADC /* Tinkoff_chatTests.swift in Sources */,
+				14AD30212211860A008DEADC /* TinkoffChatTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,7 +646,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14AD302C2211860A008DEADC /* Tinkoff_chatUITests.swift in Sources */,
+				14AD302C2211860A008DEADC /* TinkoffChatUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

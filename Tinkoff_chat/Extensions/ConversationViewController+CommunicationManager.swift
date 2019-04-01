@@ -17,7 +17,7 @@ extension ConversationViewController: CommunicationManagerDelegate {
         conversation.hasUnreadMessages = false
         tableView.reloadData()
     }
-    
+
     func handleError(error: Error) {
         self.view.endEditing(true)
         let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)

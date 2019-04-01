@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 extension AppUser {
-    
+
     static func getRequest(model: NSManagedObjectModel) -> NSFetchRequest<AppUser>? {
         let template = "AppUserFetch"
         guard let request = model.fetchRequestTemplate(forName: template) as? NSFetchRequest<AppUser> else {
@@ -18,7 +18,7 @@ extension AppUser {
             return nil }
         return request
     }
-    
+
     static func insertProfile(in context: NSManagedObjectContext) -> AppUser? {
         guard let profile = NSEntityDescription.insertNewObject(forEntityName: "AppUser", into: context) as? AppUser else {
             return nil
@@ -28,7 +28,7 @@ extension AppUser {
         profile.profileDescription = "No descpriton was provided"
         return profile
     }
-    
+
     static func getProfile(in context: NSManagedObjectContext, completion: @escaping (AppUser?) -> Void) {
         context.perform {
             guard let model = context.persistentStoreCoordinator?.managedObjectModel else { return }

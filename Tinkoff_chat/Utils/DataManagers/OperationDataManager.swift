@@ -11,16 +11,16 @@ import Foundation
 class OperationDataManager: ProfileDataManager {
     let savePath: URL
     let operationQueue = OperationQueue()
-    
+
     init() {
         let homeDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         savePath = homeDir.first!.appendingPathComponent("userProfile").appendingPathExtension("plist")
-        
+
         /// Serial queue for avoiding race conditions
         operationQueue.qualityOfService = .userInitiated
         operationQueue.maxConcurrentOperationCount = 1
     }
-    
+
     func saveProfile(newProfile: ProfileData, oldProfile: ProfileData, callback: @escaping (Error?) -> Void) {
         let saveOperation = SaveProfileOperation()
         saveOperation.savePath = savePath
@@ -29,7 +29,7 @@ class OperationDataManager: ProfileDataManager {
         saveOperation.oldProfile = oldProfile
         operationQueue.addOperation(saveOperation)
     }
-    
+
     func getProfile(callback: @escaping (ProfileData) -> Void) {
         let loadOperation = LoadProfileOperation()
         loadOperation.savePath = savePath
@@ -42,7 +42,7 @@ class LoadProfileOperation: Operation {
     var profile: ProfileData!
     var savePath: URL!
     var callback: ((ProfileData) -> Void)!
-    
+
     override func main() {
         let name = UserDefaults.standard.string(forKey: "user_name") ?? "Без имени"
         let description = UserDefaults.standard.string(forKey: "user_description") ?? ""
@@ -60,10 +60,10 @@ class LoadProfileOperation: Operation {
 class SaveProfileOperation: Operation {
     var callback: ((Error?) -> Void)!
     var savePath: URL!
-    
+
     var newProfile: ProfileData!
     var oldProfile: ProfileData!
-    
+
     override func main() {
         if newProfile.name != oldProfile.name {
             UserDefaults.standard.set(newProfile.name, forKey: "user_name")

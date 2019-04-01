@@ -13,26 +13,26 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
     /// Logger object for logging applicationState
     let logger = StateLogger.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         /// Достаем данные из UserDefaults
         if let savedData = UserDefaults.standard.value(forKey: "SavedTheme") as? Data, let theme = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedData) as? UIColor {
             UINavigationBar.appearance().barTintColor = theme
         } else {
             UINavigationBar.appearance().barTintColor = UIColor.white
         }
-        
+
         /// Use of applicationState extensions helps us to immediately get current state string
         logger.appStateTransitionInfo(#function, from: "Not running", to: "\(UIApplication.shared.applicationState)")
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        logger.appStateTransitionInfo(#function, from:"\(UIApplication.shared.applicationState)", to: "inactive")
+        logger.appStateTransitionInfo(#function, from: "\(UIApplication.shared.applicationState)", to: "inactive")
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -62,11 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "Tinkoff_chat")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -98,4 +98,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

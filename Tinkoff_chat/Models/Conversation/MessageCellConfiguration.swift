@@ -10,5 +10,5 @@ import Foundation
 
 protocol MessageCellConfiguration: class {
     // changed name due to "Unavailable var 'text' was used to satisfy a requirement of protocol" error
-    var messageText : String? {get set}
+    var messageText: String? {get set}
 }

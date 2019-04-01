@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class MessageCell: UITableViewCell, MessageCellConfiguration {
-    
+
     @IBOutlet private var messageLbl: UILabel!
-    
+
     var messageText: String? {
         didSet {
             messageLbl.text = messageText
@@ -20,5 +20,5 @@ class MessageCell: UITableViewCell, MessageCellConfiguration {
             messageLbl.clipsToBounds = true
         }
     }
-    
+
 }

@@ -10,17 +10,17 @@ import Foundation
 import UIKit
 
 class ConversationCell: UITableViewCell, ConversationCellConfiguration {
-    
+
     @IBOutlet private var nameLbl: UILabel!
     @IBOutlet private var messageLbl: UILabel!
     @IBOutlet private var dateLbl: UILabel!
-    
+
     var name: String? {
         didSet {
             nameLbl.text = name ?? "No name"
         }
     }
-    
+
     var message: String? {
         didSet {
             if message == nil {
@@ -29,25 +29,25 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
             messageLbl.text = message ?? "No messages yet"
         }
     }
-    
+
     var date: Date? {
         didSet {
             guard let date = date, message != nil else {dateLbl.text = ""; return }
 //            guard  let message = message else { dateLbl.text = ""; return }
-            
+
             let dateFormatter = DateFormatter()
             let calendar = Calendar.current
-            
+
             if calendar.isDateInToday(date) {
                 dateFormatter.dateFormat = "HH:mm"
             } else {
                 dateFormatter.dateFormat = "dd MMM"
             }
-            
+
             dateLbl.text = dateFormatter.string(from: date)
         }
     }
-    
+
     var online: Bool = false {
         didSet {
             if online {
@@ -57,18 +57,17 @@ class ConversationCell: UITableViewCell, ConversationCellConfiguration {
             }
         }
     }
-    
+
     var hasUnreadMessages: Bool = false {
         didSet {
             guard let message = message else { return }
             if hasUnreadMessages {
-                messageLbl.font = UIFont(name: "Futura-Bold", size:18)
+                messageLbl.font = UIFont(name: "Futura-Bold", size: 18)
             } else {
-                messageLbl.font = UIFont(name: "Futura-Light", size:18)
+                messageLbl.font = UIFont(name: "Futura-Light", size: 18)
             }
             messageLbl.text = message
         }
     }
-    
-    
+
 }

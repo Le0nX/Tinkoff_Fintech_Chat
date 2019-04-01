@@ -17,11 +17,11 @@ enum TableSection: Int {
 }
 
 extension ConversationsListViewController: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let tableSection = TableSection(rawValue: section) {
             switch tableSection {
@@ -33,7 +33,7 @@ extension ConversationsListViewController: UITableViewDataSource {
         }
         return ""
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = TableSection(rawValue: section) {
             switch tableSection {
@@ -45,9 +45,9 @@ extension ConversationsListViewController: UITableViewDataSource {
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ConversationCell", for: indexPath) as! ConversationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConversationCell", for: indexPath) as! ConversationCell // swiftlint:disable:this force_cast
         let conversation: Conversation
         switch indexPath.section {
         case 0:
@@ -62,6 +62,5 @@ extension ConversationsListViewController: UITableViewDataSource {
         cell.online = conversation.online
         return cell
     }
-    
-    
+
 }

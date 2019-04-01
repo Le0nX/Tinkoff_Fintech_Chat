@@ -9,7 +9,7 @@
 import Foundation
 
 class Conversation {
-    
+
     var userId: String
     var name: String?
     var message: String?
@@ -17,14 +17,14 @@ class Conversation {
     var date: Date?
     var hasUnreadMessages: Bool
     var history: [Message] = []
-    
+
     init(userId: String, name: String?) {
         self.userId = userId
         self.name = name
         online = true
         hasUnreadMessages = false
     }
-    
+
     enum Message {
         case income(String)
         case outcome(String)

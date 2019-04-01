@@ -11,21 +11,21 @@ import UIKit
 class ThemesViewController: UIViewController {
 
     @IBOutlet var themeButtons: [UIButton]!
-    
+
     typealias ThemeHandler = (UIColor) -> Void
-    var changeThemeHandler:ThemeHandler!
-    
+    var changeThemeHandler: ThemeHandler!
+
     private let model: Themes = Themes(color1: UIColor.red, color2: UIColor.green, color3: UIColor.blue)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = navigationController?.navigationBar.barTintColor
     }
-    
+
     @IBAction func choosedThemeButton(_ sender: UIButton) {
         if sender == themeButtons[0] {
             changeThemeHandler(model.theme1)
@@ -41,5 +41,5 @@ class ThemesViewController: UIViewController {
             view.backgroundColor = model.theme3
         }
     }
-   
+
 }

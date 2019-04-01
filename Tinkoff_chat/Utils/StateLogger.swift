@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /**
     Logs App's state transition
  
@@ -28,12 +27,12 @@ import Foundation
  ```
 */
 class StateLogger {
-    
+
     /// This is a **singleton** for the only one instance of Logger in our system
     static let shared = StateLogger()
-    
-    private init(){}
-    
+
+    private init() {}
+
     /**
         Function of logging current state's transition information
      ## Important Notes ##
@@ -52,9 +51,9 @@ class StateLogger {
         } else {
             self.printLog(about: "ERROR occured in StateLogger")
         }
-        
+
     }
-    
+
     /**
       Just prints a string.
       Uses DEBUG target to enable/disable printing
@@ -64,11 +63,11 @@ class StateLogger {
         print(about)
         #endif
     }
-    
+
     /// Метод логирования выбранной темы
     ///
     /// - Parameter selectedTheme: текущая тема
-    func logThemeChanged(selectedTheme: UIColor){
+    func logThemeChanged(selectedTheme: UIColor) {
         #if DEBUG
         print("Selected theme is \(selectedTheme)")
         #endif

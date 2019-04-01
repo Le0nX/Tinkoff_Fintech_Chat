@@ -9,53 +9,52 @@
 import Foundation
 
 class GCDDataManager: ProfileDataManager {
-    
+
     /// Serial queue
     let serialQueue =  DispatchQueue(label: "com.nefedov.serial", qos: .userInitiated)
     let savePath: URL
-    
+
     init() {
         let homeDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         savePath = homeDir.first!.appendingPathComponent("userProfile").appendingPathExtension("plist")
     }
-    
-    
+
     /// Метод сохранения картинки в png.
     ///
     /// - Parameter image: картинка для сохранения
     /// - Throws: ErrorProfile.imageToPng
     func saveImage(image: UIImage) throws {
-        
+
         guard let imagePng = image.pngData() else {
             throw ErrorProfile.imageToPng
         }
-        
+
         do {
             try imagePng.write(to: savePath, options: .noFileProtection)
         } catch let exception {
             throw exception
         }
     }
-    
+
     func getProfile(callback: @escaping (ProfileData) -> Void) {
         serialQueue.async {
             let image: UIImage!
             let name = UserDefaults.standard.string(forKey: "user_name") ?? "Без имени"
             let description = UserDefaults.standard.string(forKey: "user_description") ?? ""
-            
+
             if let imagePng =  try? Data(contentsOf: self.savePath), UIImage(data: imagePng) != nil {
                 image = UIImage(data: imagePng)!
             } else {
                 image = UIImage(named: "placeholder-user")! //default pic
             }
-            
+
             let profile = ProfileData(name: name, description: description, userImage: image)
             DispatchQueue.main.async {
                 callback(profile)
             }
         }
     }
-    
+
     /// Сохранение профиля
     ///
     /// - Parameters:

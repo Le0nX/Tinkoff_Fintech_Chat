@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension ConversationsListViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "ConversationSegue", sender: indexPath)

@@ -9,9 +9,9 @@
 import Foundation
 
 class CoreDataManager {
-    
+
     private let coreDataStack = CoreDataStack.shared
-    
+
     func loadProfile(completion: @escaping (AppUser?) -> Void) {
         AppUser.getProfile(in: coreDataStack.saveContext) { (userProfile) in
             DispatchQueue.main.async {
@@ -19,8 +19,7 @@ class CoreDataManager {
             }
         }
     }
-    
-    
+
     func saveProfile(completion: @escaping (Error?) -> Void) {
         coreDataStack.performSave(context: coreDataStack.saveContext) { (error) in
             DispatchQueue.main.async {
@@ -28,5 +27,5 @@ class CoreDataManager {
             }
         }
     }
-    
+
 }

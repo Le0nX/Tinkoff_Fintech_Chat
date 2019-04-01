@@ -9,11 +9,11 @@
 import UIKit
 
 extension ConversationsListViewController: ThemesViewControllerDelegate {
-    
+
     func themesViewController(_ controller: ThemesViewController, didSelect selectedTheme: UIColor) {
         controller.view.backgroundColor = selectedTheme
         UINavigationBar.appearance().barTintColor = selectedTheme
-        
+
         /// save Themes data
         DispatchQueue.global(qos: .utility).async {
             guard let themeData =  try? NSKeyedArchiver.archivedData(withRootObject: selectedTheme, requiringSecureCoding: false) else { return }
@@ -21,5 +21,5 @@ extension ConversationsListViewController: ThemesViewControllerDelegate {
         }
         StateLogger.shared.logThemeChanged(selectedTheme: selectedTheme)
     }
-    
+
 }
